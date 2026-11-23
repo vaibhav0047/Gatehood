@@ -42,7 +42,6 @@ if (isFirebaseConfigured) {
         db = getFirestore(app);
       }
     } else {
-      // Native (iOS & Android)
       try {
         db = initializeFirestore(app, {
           localCache: persistentLocalCache(),
@@ -55,15 +54,10 @@ if (isFirebaseConfigured) {
     if (process.env.EXPO_PUBLIC_USE_EMULATOR === 'true' && db) {
       const host = Platform.OS === 'android' ? '10.0.2.2' : 'localhost';
       connectFirestoreEmulator(db, host, 8080);
-      console.log(`[Firebase] Connected to Firestore emulator at ${host}:8080`);
     }
   } catch (error) {
-    console.warn('[Firebase] Initialization error:', error);
+    console.warn('Firebase init error', error);
   }
-} else {
-  console.info(
-    '[Firebase] Real credentials not set. Running in resilient Offline / Local Store Mode with full feature fidelity.'
-  );
 }
 
 export { app, db };

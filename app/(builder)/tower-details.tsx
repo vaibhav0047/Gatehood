@@ -40,7 +40,7 @@ export default function TowerDetailsScreen() {
   const handleShareCode = async (buyer: Buyer) => {
     try {
       await Share.share({
-        message: `Dear ${buyer.name}, your exclusive invite code for unit ${buyer.unit} on the TowerPulse app is: ${buyer.inviteCode}. Download the app to track construction progress and receive verified project notices.`,
+        message: `Hello ${buyer.name}, your invite code for unit ${buyer.unit} on TowerPulse is: ${buyer.inviteCode}.`,
       });
     } catch {
       Alert.alert('Invite Code', `Code: ${buyer.inviteCode}`);
@@ -49,7 +49,6 @@ export default function TowerDetailsScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Top Header */}
       <View style={styles.header}>
         <TouchableOpacity style={styles.backBtn} onPress={() => router.back()}>
           <Ionicons name="arrow-back" size={20} color="#0F172A" />
@@ -60,7 +59,6 @@ export default function TowerDetailsScreen() {
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
-        {/* Tower Stat Card */}
         <View style={styles.heroCard}>
           <View style={styles.heroTop}>
             <View>
@@ -76,16 +74,14 @@ export default function TowerDetailsScreen() {
             <Text style={styles.ratioMain}>
               {joinedCount} / {buyers.length}
             </Text>
-            <Text style={styles.ratioSub}>Buyers Linked & Onboarded</Text>
+            <Text style={styles.ratioSub}>Units Onboarded</Text>
           </View>
 
-          {/* Progress bar */}
           <View style={styles.track}>
             <View style={[styles.fill, { width: `${joinRate}%` }]} />
           </View>
         </View>
 
-        {/* Filter Pills */}
         <View style={styles.filterRow}>
           <TouchableOpacity
             style={[styles.filterPill, filter === 'all' && styles.filterPillActive]}
@@ -115,7 +111,6 @@ export default function TowerDetailsScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* Buyer Roster List */}
         <View style={styles.list}>
           {filteredBuyers.map((buyer) => {
             const isJoined = buyer.inviteStatus === 'joined';
@@ -184,7 +179,6 @@ export default function TowerDetailsScreen() {
                   </View>
                 </View>
 
-                {/* Bottom Row: Invite Code & Share Button */}
                 <View style={styles.cardBottom}>
                   <View style={styles.codeWrap}>
                     <Text style={styles.codeLabel}>INVITE CODE:</Text>

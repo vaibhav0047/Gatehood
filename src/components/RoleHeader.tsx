@@ -38,7 +38,6 @@ export const RoleHeader: React.FC = () => {
       </View>
 
       <View style={styles.actionsSection}>
-        {/* Offline simulator toggle button */}
         <TouchableOpacity
           style={[styles.simButton, isOffline && styles.simButtonActive]}
           onPress={() => setIsOffline(!isOffline)}
@@ -54,7 +53,6 @@ export const RoleHeader: React.FC = () => {
           </Text>
         </TouchableOpacity>
 
-        {/* Switch Role Button */}
         <TouchableOpacity style={styles.switchButton} onPress={handleToggleRole} activeOpacity={0.8}>
           <Ionicons name="swap-horizontal" size={14} color="#FFFFFF" />
           <Text style={styles.switchText}>

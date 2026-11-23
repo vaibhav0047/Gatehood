@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -24,7 +24,7 @@ export default function IndexScreen() {
     return (
       <View style={styles.centerContainer}>
         <ActivityIndicator size="large" color="#1E40AF" />
-        <Text style={styles.loadingText}>Initializing TowerPulse...</Text>
+        <Text style={styles.loadingText}>Loading...</Text>
       </View>
     );
   }
@@ -39,15 +39,11 @@ export default function IndexScreen() {
         <Text style={styles.subtitle}>
           Residential Project Updates & Verified Buyer Feed
         </Text>
-        <Text style={styles.badgeText}>
-          Real-time notices • Targeted delivery • Read receipts at scale
-        </Text>
       </View>
 
       <View style={styles.cardContainer}>
-        <Text style={styles.sectionHeader}>SELECT EXPERIENCE</Text>
+        <Text style={styles.sectionHeader}>SELECT PORTAL</Text>
 
-        {/* Buyer Entry Button */}
         <TouchableOpacity
           style={styles.roleCard}
           onPress={async () => {
@@ -67,14 +63,13 @@ export default function IndexScreen() {
             <Text style={styles.roleTitle}>Buyer Portal</Text>
             <Text style={styles.roleDesc}>
               {currentBuyer
-                ? `Logged in as ${currentBuyer.name} (${currentBuyer.unit})`
-                : 'Join with invite code to view construction progress & personalized notices'}
+                ? `Active unit: ${currentBuyer.unit} (${currentBuyer.name})`
+                : 'Enter invite code to connect unit and view updates'}
             </Text>
           </View>
           <Ionicons name="chevron-forward" size={18} color="#94A3B8" />
         </TouchableOpacity>
 
-        {/* Builder Entry Button */}
         <TouchableOpacity
           style={styles.roleCard}
           onPress={async () => {
@@ -89,7 +84,7 @@ export default function IndexScreen() {
           <View style={styles.roleTextContainer}>
             <Text style={styles.roleTitle}>Builder Console</Text>
             <Text style={styles.roleDesc}>
-              Import CSV, generate invite codes, broadcast notices & track read receipts
+              Manage buyers, broadcast notices, and monitor read receipts
             </Text>
           </View>
           <Ionicons name="chevron-forward" size={18} color="#94A3B8" />
@@ -99,7 +94,7 @@ export default function IndexScreen() {
       <View style={styles.footerNote}>
         <Ionicons name="shield-checkmark-outline" size={14} color="#64748B" />
         <Text style={styles.footerText}>
-          Offline-ready • 15/page feed • Zero credentials committed
+          Real-time updates • Verified delivery
         </Text>
       </View>
     </View>
@@ -157,16 +152,6 @@ const styles = StyleSheet.create({
     marginTop: 6,
     maxWidth: 280,
     lineHeight: 20,
-  },
-  badgeText: {
-    fontSize: 11,
-    color: '#059669',
-    fontWeight: '600',
-    marginTop: 10,
-    backgroundColor: '#ECFDF5',
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 12,
   },
   cardContainer: {
     width: '100%',

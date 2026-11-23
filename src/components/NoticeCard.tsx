@@ -54,7 +54,6 @@ export const NoticeCard: React.FC<NoticeCardProps> = ({
       onPress={onPress}
       activeOpacity={0.85}
     >
-      {/* Top Header: Category & Pinned & Read Status */}
       <View style={styles.topRow}>
         <View style={styles.badgeGroup}>
           {notice.isPinned && (
@@ -79,7 +78,6 @@ export const NoticeCard: React.FC<NoticeCardProps> = ({
           </View>
         </View>
 
-        {/* Read / Unread Indicator for Buyer */}
         {!showBuilderAnalytics && (
           <View style={styles.readIndicator}>
             {!isRead ? (
@@ -97,7 +95,6 @@ export const NoticeCard: React.FC<NoticeCardProps> = ({
         )}
       </View>
 
-      {/* Main Content Area */}
       <View style={styles.contentRow}>
         <View style={styles.textColumn}>
           <Text
@@ -112,13 +109,11 @@ export const NoticeCard: React.FC<NoticeCardProps> = ({
           </Text>
         </View>
 
-        {/* Optional Image Thumbnail */}
         {notice.imageUrl && (
           <Image source={{ uri: notice.imageUrl }} style={styles.thumbnail} resizeMode="cover" />
         )}
       </View>
 
-      {/* Footer Info: Author, Date, and Builder Analytics */}
       <View style={styles.footerRow}>
         <View style={styles.authorGroup}>
           <Ionicons name="time-outline" size={12} color="#9CA3AF" />
@@ -129,7 +124,6 @@ export const NoticeCard: React.FC<NoticeCardProps> = ({
           </Text>
         </View>
 
-        {/* Builder View: Read Count & Who haven't read link */}
         {showBuilderAnalytics ? (
           <View style={styles.analyticsGroup}>
             <View style={styles.readCountBadge}>

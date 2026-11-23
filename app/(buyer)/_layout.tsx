@@ -56,7 +56,7 @@ export default function BuyerLayout() {
         <Tabs.Screen
           name="notice-modal"
           options={{
-            href: null, // Hidden from tab bar, accessed via navigation
+            href: null,
           }}
         />
       </Tabs>

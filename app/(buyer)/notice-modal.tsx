@@ -22,7 +22,6 @@ export default function NoticeModalScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Top Modal Header */}
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
           <Ionicons name="arrow-back" size={20} color="#0F172A" />
@@ -36,7 +35,6 @@ export default function NoticeModalScreen() {
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
-        {/* Badges */}
         <View style={styles.badgesRow}>
           {isPinned && (
             <View style={styles.pinnedBadge}>
@@ -52,10 +50,8 @@ export default function NoticeModalScreen() {
           </View>
         </View>
 
-        {/* Title */}
         <Text style={styles.title}>{params.title}</Text>
 
-        {/* Author & Timestamp Metadata */}
         <View style={styles.metaRow}>
           <View style={styles.metaIcon}>
             <Ionicons name="business" size={16} color="#1E40AF" />
@@ -68,7 +64,6 @@ export default function NoticeModalScreen() {
           </View>
         </View>
 
-        {/* Optional Image */}
         {params.imageUrl ? (
           <Image
             source={{ uri: params.imageUrl }}
@@ -77,16 +72,14 @@ export default function NoticeModalScreen() {
           />
         ) : null}
 
-        {/* Full Notice Content */}
         <View style={styles.bodyBox}>
           <Text style={styles.body}>{params.content}</Text>
         </View>
 
-        {/* Read Receipt Scale Assurance Note */}
         <View style={styles.readReceiptNotice}>
           <Ionicons name="shield-checkmark-outline" size={18} color="#047857" />
           <Text style={styles.readReceiptNoticeText}>
-            Your read receipt has been securely registered with the builder project office.
+            Read receipt registered with the builder project office.
           </Text>
         </View>
       </ScrollView>

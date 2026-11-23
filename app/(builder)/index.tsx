@@ -33,9 +33,8 @@ export default function BuilderOverviewScreen() {
       setOverview(breakdown.overview);
 
       const allNotices = await noticeService.getAllNotices();
-      setNotices(allNotices.slice(0, 10)); // show latest 10
-    } catch (e) {
-      console.warn('Dashboard load error', e);
+      setNotices(allNotices.slice(0, 10));
+    } catch {
     } finally {
       setLoading(false);
     }
@@ -55,7 +54,7 @@ export default function BuilderOverviewScreen() {
     return (
       <View style={styles.centerContainer}>
         <ActivityIndicator size="large" color="#B45309" />
-        <Text style={styles.loadingText}>Loading Builder Console...</Text>
+        <Text style={styles.loadingText}>Loading Dashboard...</Text>
       </View>
     );
   }
@@ -66,7 +65,6 @@ export default function BuilderOverviewScreen() {
       contentContainerStyle={styles.content}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
     >
-      {/* Top Banner / Project Metrics */}
       <View style={styles.projectHero}>
         <View style={styles.heroTop}>
           <View>
@@ -107,7 +105,6 @@ export default function BuilderOverviewScreen() {
         )}
       </View>
 
-      {/* Quick Action Shortcuts */}
       <View style={styles.actionsBar}>
         <TouchableOpacity
           style={styles.postNoticeBtn}
@@ -128,12 +125,11 @@ export default function BuilderOverviewScreen() {
         </TouchableOpacity>
       </View>
 
-      {/* Tower Join Breakdown Section */}
       <View style={styles.sectionHeaderRow}>
         <View>
           <Text style={styles.sectionTitle}>BUYER ONBOARDING BY TOWER</Text>
           <Text style={styles.sectionSubtitle}>
-            Track which towers have claimed invite codes
+            Status of claimed invite codes across towers
           </Text>
         </View>
       </View>
@@ -164,7 +160,6 @@ export default function BuilderOverviewScreen() {
               </View>
             </View>
 
-            {/* Progress Bar */}
             <View style={styles.towerProgressBar}>
               <View
                 style={[
@@ -187,12 +182,11 @@ export default function BuilderOverviewScreen() {
         ))}
       </View>
 
-      {/* Notices with Read Count Section */}
       <View style={styles.sectionHeaderRow}>
         <View>
           <Text style={styles.sectionTitle}>NOTICES & READ RECEIPTS</Text>
           <Text style={styles.sectionSubtitle}>
-            Tap a notice to see who has read it and who hasn't
+            Tap a notice to view readership breakdown
           </Text>
         </View>
       </View>

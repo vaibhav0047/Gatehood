@@ -6,7 +6,6 @@ import {
   FlatList,
   ActivityIndicator,
   RefreshControl,
-  TouchableOpacity,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useApp } from '../../src/context/AppContext';
@@ -34,7 +33,6 @@ export default function FeedScreen() {
 
   const cursorRef = useRef<any>(null);
 
-  // Initial load
   const loadInitialFeed = useCallback(async () => {
     if (!currentBuyer) return;
     setLoading(true);
@@ -46,7 +44,7 @@ export default function FeedScreen() {
         currentBuyer,
         filter,
         null,
-        15 // 15 at a time
+        15
       );
 
       setNotices(result.notices);
@@ -56,8 +54,7 @@ export default function FeedScreen() {
       if (result.fromCache || isOffline) {
         setCachedCount(result.notices.length);
       }
-    } catch (err: any) {
-      console.warn('Error loading feed:', err);
+    } catch {
       setError('Unable to reach server. Check connection or tap retry.');
     } finally {
       setLoading(false);
@@ -68,17 +65,14 @@ export default function FeedScreen() {
     loadInitialFeed();
   }, [loadInitialFeed]);
 
-  // Real-time listener for live updates (when not offline)
   useEffect(() => {
     if (!currentBuyer || isOffline) return;
 
     const unsubscribe = noticeService.subscribeToFeed(currentBuyer, filter, (liveNotices) => {
-      // Merge or update newly posted notices
       setNotices((prev) => {
         const existingIds = new Set(prev.map((n) => n.id));
         const newItems = liveNotices.filter((n) => !existingIds.has(n.id));
         if (newItems.length > 0) {
-          // Prepend new notices and maintain pinned order
           const merged = [...newItems, ...prev];
           merged.sort((a, b) => {
             if (a.isPinned !== b.isPinned) return a.isPinned ? -1 : 1;
@@ -95,7 +89,6 @@ export default function FeedScreen() {
     };
   }, [currentBuyer, filter, isOffline]);
 
-  // Load more (pagination 15 at a time)
   const handleLoadMore = async () => {
     if (!currentBuyer || loadingMore || !hasMore || loading) return;
 
@@ -116,14 +109,12 @@ export default function FeedScreen() {
 
       cursorRef.current = result.lastDoc;
       setHasMore(result.hasMore);
-    } catch (err) {
-      console.warn('Failed to load more notices', err);
+    } catch {
     } finally {
       setLoadingMore(false);
     }
   };
 
-  // Pull to refresh
   const onRefresh = async () => {
     setRefreshing(true);
     await loadInitialFeed();
@@ -165,12 +156,11 @@ export default function FeedScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header bar */}
       <View style={styles.header}>
         <View>
           <Text style={styles.feedTitle}>Project Updates Feed</Text>
           <Text style={styles.feedSubtitle}>
-            Showing notices for {currentBuyer.tower} • Unit {currentBuyer.unit}
+            {currentBuyer.tower} • Unit {currentBuyer.unit}
           </Text>
         </View>
 
@@ -182,7 +172,6 @@ export default function FeedScreen() {
         )}
       </View>
 
-      {/* Offline Mode Banner if active or cached */}
       {(isOffline || isFromCache) && (
         <OfflineBanner
           onRetry={loadInitialFeed}
@@ -190,7 +179,6 @@ export default function FeedScreen() {
         />
       )}
 
-      {/* Feed Filter Tabs: All / My Tower / My Unit */}
       <FeedFilterTabs
         activeFilter={filter}
         onSelectFilter={(newFilter) => setFilter(newFilter)}
@@ -198,11 +186,10 @@ export default function FeedScreen() {
         unitName={currentBuyer.unit}
       />
 
-      {/* Notice Feed List */}
       {loading ? (
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="large" color="#1E40AF" />
-          <Text style={styles.loadingFeedText}>Loading targeted notices (15/batch)...</Text>
+          <Text style={styles.loadingFeedText}>Loading notices...</Text>
         </View>
       ) : error ? (
         <EmptyState

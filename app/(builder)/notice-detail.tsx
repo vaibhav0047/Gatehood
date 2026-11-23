@@ -38,8 +38,7 @@ export default function NoticeDetailAnalyticsScreen() {
           setReadBuyers(analytics.readBuyers);
           setUnreadBuyers(analytics.unreadBuyers);
         }
-      } catch (e) {
-        console.warn('Failed to load notice analytics', e);
+      } catch {
       } finally {
         setLoading(false);
       }
@@ -51,7 +50,7 @@ export default function NoticeDetailAnalyticsScreen() {
     return (
       <View style={styles.centerContainer}>
         <ActivityIndicator size="large" color="#B45309" />
-        <Text style={styles.loadingText}>Loading Read Analytics...</Text>
+        <Text style={styles.loadingText}>Loading Analytics...</Text>
       </View>
     );
   }
@@ -72,30 +71,27 @@ export default function NoticeDetailAnalyticsScreen() {
 
   const handleNudge = (buyer: Buyer) => {
     const text = encodeURIComponent(
-      `Hello ${buyer.name}, this is regarding an important construction notice for your unit (${buyer.unit}) on TowerPulse. Please review it on the app.`
+      `Hello ${buyer.name}, please check the latest notice for unit ${buyer.unit} on TowerPulse.`
     );
     const cleanPhone = buyer.phone.replace(/[^0-9+]/g, '');
     const url = `whatsapp://send?phone=${cleanPhone}&text=${text}`;
     Linking.openURL(url).catch(() => {
-      // Fallback to SMS
       Linking.openURL(`sms:${cleanPhone}?body=${text}`).catch(() => {});
     });
   };
 
   return (
     <View style={styles.container}>
-      {/* Top Header */}
       <View style={styles.header}>
         <TouchableOpacity style={styles.headerBack} onPress={() => router.back()}>
           <Ionicons name="arrow-back" size={20} color="#0F172A" />
           <Text style={styles.headerBackText}>Overview</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Read Receipt Audit</Text>
+        <Text style={styles.headerTitle}>Read Receipts</Text>
         <View style={{ width: 40 }} />
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
-        {/* Notice Info Card */}
         <View style={styles.noticeCard}>
           <View style={styles.noticeBadges}>
             {notice.isPinned && (
@@ -114,9 +110,8 @@ export default function NoticeDetailAnalyticsScreen() {
           </Text>
         </View>
 
-        {/* Read Count Analytics Card */}
         <View style={styles.analyticsCard}>
-          <Text style={styles.analyticsTitle}>ENGAGEMENT & READ REACH</Text>
+          <Text style={styles.analyticsTitle}>READ REACH</Text>
           <View style={styles.ratioRow}>
             <View>
               <Text style={styles.ratioMain}>
@@ -124,7 +119,7 @@ export default function NoticeDetailAnalyticsScreen() {
                 <Text style={styles.ratioSub}>/ {totalTarget} Buyers Read</Text>
               </Text>
               <Text style={styles.unreadCallout}>
-                {unreadBuyers.length} buyers have NOT seen this notice
+                {unreadBuyers.length} buyers have not read this notice
               </Text>
             </View>
             <View style={styles.percentageCircle}>
@@ -133,13 +128,11 @@ export default function NoticeDetailAnalyticsScreen() {
             </View>
           </View>
 
-          {/* Progress Bar */}
           <View style={styles.track}>
             <View style={[styles.fill, { width: `${readPercentage}%` }]} />
           </View>
         </View>
 
-        {/* Tabs: Unread (Nudge list) vs Read */}
         <View style={styles.tabsRow}>
           <TouchableOpacity
             style={[styles.tab, activeTab === 'unread' && styles.tabActive]}
@@ -180,15 +173,14 @@ export default function NoticeDetailAnalyticsScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* Tab 1: Unread Buyers List with Nudge Action */}
         {activeTab === 'unread' && (
           <View style={styles.listContainer}>
             {unreadBuyers.length === 0 ? (
               <View style={styles.allReadBox}>
                 <Ionicons name="checkmark-circle" size={32} color="#059669" />
-                <Text style={styles.allReadTitle}>100% Read Coverage!</Text>
+                <Text style={styles.allReadTitle}>All Targeted Buyers Have Read</Text>
                 <Text style={styles.allReadDesc}>
-                  Every targeted buyer in the audience has opened and read this notice.
+                  Every targeted buyer has viewed this notice.
                 </Text>
               </View>
             ) : (
@@ -220,7 +212,6 @@ export default function NoticeDetailAnalyticsScreen() {
           </View>
         )}
 
-        {/* Tab 2: Read Receipts List */}
         {activeTab === 'read' && (
           <View style={styles.listContainer}>
             {readBuyers.length === 0 ? (

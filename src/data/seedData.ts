@@ -1,7 +1,6 @@
 import { Buyer, Notice } from '../types';
 
 export const INITIAL_BUYERS: Buyer[] = [
-  // Tower A
   {
     id: 'A-1204',
     name: 'Rahul Sharma',
@@ -58,7 +57,7 @@ export const INITIAL_BUYERS: Buyer[] = [
     possessionDate: '2027-04-30',
     inviteCode: 'A1503-4LK',
     inviteStatus: 'pending',
-    inviteExpiresAt: Date.now() - 2 * 86400000, // Expired code test case!
+    inviteExpiresAt: Date.now() - 2 * 86400000,
     joinedAt: null,
     createdAt: Date.now() - 40 * 86400000,
   },
@@ -77,8 +76,6 @@ export const INITIAL_BUYERS: Buyer[] = [
     joinedAt: Date.now() - 12 * 86400000,
     createdAt: Date.now() - 30 * 86400000,
   },
-
-  // Tower B
   {
     id: 'B-0301',
     name: 'Rohit Verma',
@@ -139,8 +136,6 @@ export const INITIAL_BUYERS: Buyer[] = [
     joinedAt: null,
     createdAt: Date.now() - 30 * 86400000,
   },
-
-  // Tower C
   {
     id: 'C-0902',
     name: 'Manish Agarwal',
@@ -186,8 +181,6 @@ export const INITIAL_BUYERS: Buyer[] = [
     joinedAt: Date.now() - 4 * 86400000,
     createdAt: Date.now() - 30 * 86400000,
   },
-
-  // Tower D
   {
     id: 'D-0202',
     name: 'Harish Nair',
@@ -218,8 +211,6 @@ export const INITIAL_BUYERS: Buyer[] = [
     joinedAt: Date.now() - 1 * 86400000,
     createdAt: Date.now() - 30 * 86400000,
   },
-
-  // Tower E
   {
     id: 'E-1001',
     name: 'Gaurav Kapoor',
@@ -237,15 +228,13 @@ export const INITIAL_BUYERS: Buyer[] = [
   },
 ];
 
-// Helper to generate 55 realistic notices
 export function generateSeedNotices(): Notice[] {
   const notices: Notice[] = [];
   const baseTime = Date.now();
 
   const rawNoticeTemplates = [
-    // Pinned notices
     {
-      title: '🚨 Mandatory Notice: Electrical Load & False Ceiling Guidelines',
+      title: 'Mandatory Notice: Electrical Load & False Ceiling Guidelines',
       content: 'All buyers undertaking interior planning must submit false ceiling drawings and electrical load requirements to the site engineering office before beginning work. Standard connected load per 3BHK unit is 8kW. Enhancements require prior approval.',
       category: 'urgent',
       targetType: 'all',
@@ -258,8 +247,8 @@ export function generateSeedNotices(): Notice[] {
       imageUrl: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156f?w=800&auto=format&fit=crop&q=60',
     },
     {
-      title: '📌 Q4 Construction Milestone: Tower A & B RCC Slabs Completed',
-      content: 'We are thrilled to announce that the structural RCC casting for all 18 floors of Tower A and Tower B has been completed on schedule. External plastering and window frame installations are now underway.',
+      title: 'Q4 Construction Milestone: Tower A & B RCC Slabs Completed',
+      content: 'We are pleased to announce that structural RCC casting for all 18 floors of Tower A and Tower B is completed on schedule. External plastering and window frame installations are now underway.',
       category: 'milestone',
       targetType: 'towers',
       targetTowers: ['Tower A', 'Tower B'],
@@ -271,8 +260,8 @@ export function generateSeedNotices(): Notice[] {
       imageUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=60',
     },
     {
-      title: '🏢 Notice for Tower A Residents: Otis High-Speed Lift Installation',
-      content: 'Otis elevator shafts have reached Tower A 14th floor. Mechanical hoist testing will run between 9 AM and 5 PM this week. Passenger lift handover is planned for February 2027.',
+      title: 'Tower A Residents: High-Speed Passenger Lift Installation',
+      content: 'Elevator shafts have reached Tower A 14th floor. Mechanical hoist testing will run between 9 AM and 5 PM this week. Passenger lift handover is planned for February 2027.',
       category: 'construction',
       targetType: 'towers',
       targetTowers: ['Tower A'],
@@ -283,7 +272,7 @@ export function generateSeedNotices(): Notice[] {
       totalTargetBuyers: 5,
     },
     {
-      title: '🔑 Unit A-1204: Woodwork & Tile Selection Schedule',
+      title: 'Unit A-1204: Woodwork & Tile Selection Schedule',
       content: 'Dear Mr. Rahul Sharma, your 3BHK unit is ready for tile selection and kitchen modular layout sign-off. Please visit the site experience center this Saturday between 11 AM - 2 PM.',
       category: 'milestone',
       targetType: 'units',
@@ -295,7 +284,7 @@ export function generateSeedNotices(): Notice[] {
       totalTargetBuyers: 1,
     },
     {
-      title: '💧 Rainwater Harvesting & Dual Plumbing System Testing',
+      title: 'Rainwater Harvesting & Dual Plumbing System Testing',
       content: 'The campus eco-grid with 6 percolation wells and the dual water recycling setup has achieved zero leakage certification from Green Building Council auditors.',
       category: 'construction',
       targetType: 'all',
@@ -307,7 +296,7 @@ export function generateSeedNotices(): Notice[] {
       totalTargetBuyers: 15,
     },
     {
-      title: '⚡ Tower B: Main Electrical Riser Cable Pulling Begins',
+      title: 'Tower B: Main Electrical Riser Cable Pulling Begins',
       content: 'Armoured copper riser cables are being installed in Tower B shafts from basement substation to 18th floor distribution panels.',
       category: 'construction',
       targetType: 'towers',
@@ -319,8 +308,8 @@ export function generateSeedNotices(): Notice[] {
       totalTargetBuyers: 4,
     },
     {
-      title: '📋 Unit B-0301: Plumbing Inspection Passed',
-      content: 'Hydrostatic pressure testing for hot/cold CPVC water lines in both master and guest bathrooms for unit B-0301 has successfully passed inspection at 10 Bar pressure for 24 hours.',
+      title: 'Unit B-0301: Plumbing Inspection Passed',
+      content: 'Hydrostatic pressure testing for hot and cold CPVC water lines in both master and guest bathrooms for unit B-0301 has passed inspection at 10 Bar pressure for 24 hours.',
       category: 'milestone',
       targetType: 'units',
       targetTowers: [],
@@ -331,7 +320,7 @@ export function generateSeedNotices(): Notice[] {
       totalTargetBuyers: 1,
     },
     {
-      title: '🏊 Clubhouse Podium & Swimming Pool Deck Concreting',
+      title: 'Clubhouse Podium & Swimming Pool Deck Concreting',
       content: 'Podium slab waterproofing and Olympic-size infinity pool concrete pouring has commenced. Completion of the clubhouse structure is slated for March 2027.',
       category: 'construction',
       targetType: 'all',
@@ -344,7 +333,7 @@ export function generateSeedNotices(): Notice[] {
       imageUrl: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&auto=format&fit=crop&q=60',
     },
     {
-      title: '📑 Demand Note & 7th Slab Payment Milestone Notice',
+      title: 'Demand Note & 7th Slab Payment Milestone Notice',
       content: 'Buyers whose unit payment plan is linked to the 7th structural floor completion slab are requested to verify demand notes dispatched to their registered email IDs.',
       category: 'payment',
       targetType: 'all',
@@ -356,7 +345,7 @@ export function generateSeedNotices(): Notice[] {
       totalTargetBuyers: 15,
     },
     {
-      title: '🏗️ Tower C: 8th Floor Slab Casting Scheduled',
+      title: 'Tower C: 8th Floor Slab Casting Scheduled',
       content: 'Concrete pumps will be deployed tonight starting 10:00 PM for the continuous casting of Tower C eighth-floor floor plate.',
       category: 'construction',
       targetType: 'towers',
@@ -368,7 +357,7 @@ export function generateSeedNotices(): Notice[] {
       totalTargetBuyers: 3,
     },
     {
-      title: '🌿 Landscaping & Miyawaki Forest Planting Drive',
+      title: 'Landscaping & Central Forest Planting Drive',
       content: 'Phase-1 central lawn leveling completed. Over 400 indigenous tree saplings are being planted along the perimeter jogging track.',
       category: 'event',
       targetType: 'all',
@@ -380,7 +369,7 @@ export function generateSeedNotices(): Notice[] {
       totalTargetBuyers: 15,
     },
     {
-      title: '🚗 Basement 2 Car Park Epoxy Flooring Application',
+      title: 'Basement 2 Car Park Epoxy Flooring Application',
       content: 'Vehicular movement in Basement-2 will be restricted as high-durability epoxy coating and parking bay numbering is being applied.',
       category: 'maintenance',
       targetType: 'all',
@@ -392,7 +381,7 @@ export function generateSeedNotices(): Notice[] {
       totalTargetBuyers: 15,
     },
     {
-      title: '🔔 Tower A: Fire Sprinkler & Smoke Detection Network',
+      title: 'Tower A: Fire Sprinkler & Smoke Detection Network',
       content: 'Floor 1 to 12 smoke detectors and deluge valves have been connected to the central fire command console. Testing commences next Tuesday.',
       category: 'construction',
       targetType: 'towers',
@@ -404,7 +393,7 @@ export function generateSeedNotices(): Notice[] {
       totalTargetBuyers: 5,
     },
     {
-      title: '🚪 Unit A-1204: Main Teakwood Door Frame Fixed',
+      title: 'Unit A-1204: Main Teakwood Door Frame Fixed',
       content: 'Main entrance premium teakwood frame has been secured with heavy-duty anchors and anti-termite treatment completed.',
       category: 'construction',
       targetType: 'units',
@@ -416,8 +405,8 @@ export function generateSeedNotices(): Notice[] {
       totalTargetBuyers: 1,
     },
     {
-      title: '☀️ Rooftop Solar Photovoltaic Grid Installation',
-      content: 'Solar panels of 120kW combined capacity will power all common area lighting and backup systems, reducing maintenance overheads by 35%.',
+      title: 'Rooftop Solar Photovoltaic Grid Installation',
+      content: 'Solar panels of 120kW combined capacity will power common area lighting and backup systems, reducing maintenance overheads.',
       category: 'milestone',
       targetType: 'all',
       targetTowers: [],
@@ -429,19 +418,8 @@ export function generateSeedNotices(): Notice[] {
     },
   ];
 
-  // Repeat and expand with realistic varied variations to ensure 55+ distinct notices
   let idCounter = 1;
-  const categories: Array<Notice['category']> = [
-    'construction',
-    'milestone',
-    'maintenance',
-    'legal',
-    'payment',
-    'event',
-    'urgent',
-  ];
 
-  // First add base templates
   rawNoticeTemplates.forEach((template, index) => {
     const audience: string[] = [];
     if (template.targetType === 'all') {
@@ -464,28 +442,27 @@ export function generateSeedNotices(): Notice[] {
       isPinned: template.isPinned,
       readCount: template.readCount,
       totalTargetBuyers: template.totalTargetBuyers,
-      createdAt: baseTime - index * 3600000 * 4, // spaced out by 4 hours
+      createdAt: baseTime - index * 3600000 * 4,
       createdBy: 'builder_admin',
       authorRole: template.authorRole,
       imageUrl: template.imageUrl,
     });
   });
 
-  // Generate additional notices up to 55 items
   const towerNames = ['Tower A', 'Tower B', 'Tower C', 'Tower D', 'Tower E'];
   const sampleUnits = ['A-1204', 'A-0502', 'B-0301', 'B-0802', 'C-0902', 'D-0202', 'E-1001'];
 
   const additionalTopics = [
-    { title: 'UPVC Window Glazing Quality Check', cat: 'construction' as const },
+    { title: 'UPVC Window Glazing Quality Inspection', cat: 'construction' as const },
     { title: 'Gas Pipeline Reticulation Network Inspection', cat: 'milestone' as const },
     { title: 'Waterproofing Polymer Screed on Balconies', cat: 'construction' as const },
     { title: 'Substation Transformer Delivery & Positioning', cat: 'milestone' as const },
     { title: 'Internal Gypsum Wall Plastering Progress', cat: 'construction' as const },
-    { title: 'Kitchen Exhaust Duct & Chimney Core Cutting', cat: 'construction' as const },
-    { title: 'Security Perimeter CCTV Fiber Loop Installation', cat: 'maintenance' as const },
-    { title: 'Quarterly Project RERA Compliance Report Uploaded', cat: 'legal' as const },
-    { title: 'Marble Flooring Laying & Diamond Polishing Phase', cat: 'construction' as const },
-    { title: 'Intercom & Smart Video Doorbell Cabling Update', cat: 'construction' as const },
+    { title: 'Kitchen Exhaust Duct & Core Cutting', cat: 'construction' as const },
+    { title: 'Perimeter Security CCTV Fiber Loop Deployment', cat: 'maintenance' as const },
+    { title: 'Quarterly Project RERA Compliance Report Filed', cat: 'legal' as const },
+    { title: 'Marble Flooring Laying & Polishing Phase', cat: 'construction' as const },
+    { title: 'Intercom & Smart Video Doorbell Cabling', cat: 'construction' as const },
   ];
 
   while (notices.length < 55) {
@@ -518,8 +495,8 @@ export function generateSeedNotices(): Notice[] {
 
     notices.push({
       id: `notice_${String(idCounter++).padStart(3, '0')}`,
-      title: `${towerPrefix}${unitPrefix}${topic.title} - Phase ${Math.floor(itemNum / 5) + 1}`,
-      content: `Official update #${itemNum}: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.`,
+      title: `${towerPrefix}${unitPrefix}${topic.title} - Stage ${Math.floor(itemNum / 5) + 1}`,
+      content: `Site inspection completed. Works are proceeding strictly in accordance with approved structural and MEP specifications.`,
       category: topic.cat,
       targetType,
       targetTowers,
@@ -528,7 +505,7 @@ export function generateSeedNotices(): Notice[] {
       isPinned: false,
       readCount: Math.floor(Math.random() * 8) + 1,
       totalTargetBuyers: targetType === 'units' ? 1 : targetType === 'towers' ? 4 : 15,
-      createdAt: baseTime - notices.length * 3600000 * 3, // spaced by 3 hours
+      createdAt: baseTime - notices.length * 3600000 * 3,
       createdBy: 'builder_admin',
       authorRole: 'Site Engineering Office',
     });

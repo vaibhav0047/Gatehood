@@ -16,9 +16,8 @@ export function parseBuyersCSV(csvContent: string): CSVImportResult {
   const rows = parseResult.data as Record<string, string>[];
 
   rows.forEach((row, index) => {
-    const rowNum = index + 2; // Accounting for 1-based index and header row
+    const rowNum = index + 2;
 
-    // Resolve column aliases
     const tower = row.tower || row.towername || row.block || row.building || '';
     const unit = row.unit || row.unitno || row.flat || row.flatno || row.apartment || '';
     const name = row.name || row.buyername || row.customername || row.buyer || '';
@@ -39,7 +38,6 @@ export function parseBuyersCSV(csvContent: string): CSVImportResult {
     seenUnits.add(cleanUnit);
 
     const now = Date.now();
-    // 30 days default expiration for invite codes
     const inviteExpiresAt = now + 30 * 24 * 60 * 60 * 1000;
 
     const buyer: Buyer = {

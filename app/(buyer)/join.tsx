@@ -58,10 +58,10 @@ export default function JoinScreen() {
   };
 
   const demoTestCases = [
-    { label: 'Valid Code (A-1204)', code: 'A1204-7KQ', type: 'valid' },
-    { label: 'Valid Code (B-0802)', code: 'B0802-9XP', type: 'valid' },
-    { label: 'Expired Code (A-1503)', code: 'A1503-4LK', type: 'expired' },
-    { label: 'Already Used (A-0502)', code: 'A0502-3TR', type: 'used' },
+    { label: 'Unit A-1204 (Active)', code: 'A1204-7KQ', type: 'valid' },
+    { label: 'Unit B-0802 (Pending)', code: 'B0802-9XP', type: 'valid' },
+    { label: 'Unit A-1503 (Expired)', code: 'A1503-4LK', type: 'expired' },
+    { label: 'Unit A-0502 (Claimed)', code: 'A0502-3TR', type: 'used' },
     { label: 'Invalid Code', code: 'XYZ99-000', type: 'invalid' },
   ];
 
@@ -71,18 +71,16 @@ export default function JoinScreen() {
       style={styles.keyboardView}
     >
       <ScrollView contentContainerStyle={styles.scrollContent} keyboardShouldPersistTaps="handled">
-        {/* Header */}
         <View style={styles.header}>
           <View style={styles.iconCircle}>
             <Ionicons name="key" size={28} color="#1E40AF" />
           </View>
-          <Text style={styles.title}>Join Your Residential Unit</Text>
+          <Text style={styles.title}>Connect Your Unit</Text>
           <Text style={styles.subtitle}>
-            Enter the personal invite code shared by the builder on SMS or email to link your apartment.
+            Enter the invite code received from the project office to link your apartment.
           </Text>
         </View>
 
-        {/* Current Active Buyer status if already joined */}
         {currentBuyer && (
           <View style={styles.currentActiveBox}>
             <View style={styles.activeLeft}>
@@ -100,7 +98,6 @@ export default function JoinScreen() {
           </View>
         )}
 
-        {/* Code Input Box */}
         <View style={styles.formCard}>
           <Text style={styles.inputLabel}>INVITE CODE</Text>
           <View style={styles.inputContainer}>
@@ -125,7 +122,6 @@ export default function JoinScreen() {
             )}
           </View>
 
-          {/* Error Feedback Banner */}
           {errorMessage && (
             <View
               style={[
@@ -170,7 +166,6 @@ export default function JoinScreen() {
             </View>
           )}
 
-          {/* Success Banner */}
           {successInfo && (
             <View style={styles.successBanner}>
               <Ionicons name="checkmark-circle" size={18} color="#059669" />
@@ -178,7 +173,6 @@ export default function JoinScreen() {
             </View>
           )}
 
-          {/* Submit Button */}
           <TouchableOpacity
             style={[styles.claimButton, loading && styles.buttonDisabled]}
             onPress={() => handleClaim()}
@@ -196,9 +190,8 @@ export default function JoinScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* Demo Fast-Test Chips */}
         <View style={styles.demoSection}>
-          <Text style={styles.demoHeader}>1-TAP TEST CODES (FOR DEMO & EVALUATION)</Text>
+          <Text style={styles.demoHeader}>TEST CODES</Text>
           <View style={styles.chipsContainer}>
             {demoTestCases.map((demo, idx) => (
               <TouchableOpacity

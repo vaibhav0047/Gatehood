@@ -12,7 +12,6 @@ const STORAGE_KEYS = {
 };
 
 export const storageService = {
-  // Feed Cache
   async getCachedFeed(): Promise<Notice[]> {
     try {
       const data = await AsyncStorage.getItem(STORAGE_KEYS.CACHED_FEED);
@@ -25,12 +24,9 @@ export const storageService = {
   async setCachedFeed(notices: Notice[]): Promise<void> {
     try {
       await AsyncStorage.setItem(STORAGE_KEYS.CACHED_FEED, JSON.stringify(notices));
-    } catch (e) {
-      console.warn('Failed to cache feed', e);
-    }
+    } catch {}
   },
 
-  // Current Buyer Session
   async getCurrentBuyer(): Promise<Buyer | null> {
     try {
       const data = await AsyncStorage.getItem(STORAGE_KEYS.CURRENT_BUYER);
@@ -47,12 +43,9 @@ export const storageService = {
       } else {
         await AsyncStorage.removeItem(STORAGE_KEYS.CURRENT_BUYER);
       }
-    } catch (e) {
-      console.warn('Failed to persist buyer session', e);
-    }
+    } catch {}
   },
 
-  // Active Role
   async getActiveRole(): Promise<'builder' | 'buyer' | null> {
     try {
       return (await AsyncStorage.getItem(STORAGE_KEYS.ACTIVE_ROLE)) as 'builder' | 'buyer' | null;
@@ -64,12 +57,9 @@ export const storageService = {
   async setActiveRole(role: 'builder' | 'buyer'): Promise<void> {
     try {
       await AsyncStorage.setItem(STORAGE_KEYS.ACTIVE_ROLE, role);
-    } catch (e) {
-      console.warn('Failed to persist active role', e);
-    }
+    } catch {}
   },
 
-  // Local Read IDs for fast UI lookup
   async getReadNoticeIds(buyerId: string): Promise<Set<string>> {
     try {
       const key = `${STORAGE_KEYS.READ_NOTICE_IDS}_${buyerId}`;
@@ -86,12 +76,9 @@ export const storageService = {
       current.add(noticeId);
       const key = `${STORAGE_KEYS.READ_NOTICE_IDS}_${buyerId}`;
       await AsyncStorage.setItem(key, JSON.stringify(Array.from(current)));
-    } catch (e) {
-      console.warn('Failed to mark notice read locally', e);
-    }
+    } catch {}
   },
 
-  // Offline / Demo Data Store for Notices & Buyers
   async getLocalNotices(): Promise<Notice[]> {
     try {
       const data = await AsyncStorage.getItem(STORAGE_KEYS.LOCAL_NOTICES);
@@ -104,9 +91,7 @@ export const storageService = {
   async setLocalNotices(notices: Notice[]): Promise<void> {
     try {
       await AsyncStorage.setItem(STORAGE_KEYS.LOCAL_NOTICES, JSON.stringify(notices));
-    } catch (e) {
-      console.warn('Failed to save local notices', e);
-    }
+    } catch {}
   },
 
   async getLocalBuyers(): Promise<Buyer[]> {
@@ -121,9 +106,7 @@ export const storageService = {
   async setLocalBuyers(buyers: Buyer[]): Promise<void> {
     try {
       await AsyncStorage.setItem(STORAGE_KEYS.LOCAL_BUYERS, JSON.stringify(buyers));
-    } catch (e) {
-      console.warn('Failed to save local buyers', e);
-    }
+    } catch {}
   },
 
   async getLocalReads(noticeId: string): Promise<ReadReceipt[]> {
@@ -144,16 +127,12 @@ export const storageService = {
         reads.push(receipt);
         await AsyncStorage.setItem(key, JSON.stringify(reads));
       }
-    } catch (e) {
-      console.warn('Failed to save local read receipt', e);
-    }
+    } catch {}
   },
 
   async clearAll(): Promise<void> {
     try {
       await AsyncStorage.clear();
-    } catch (e) {
-      console.warn('Failed to clear storage', e);
-    }
+    } catch {}
   },
 };

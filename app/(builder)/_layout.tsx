@@ -56,13 +56,13 @@ export default function BuilderLayout() {
         <Tabs.Screen
           name="notice-detail"
           options={{
-            href: null, // Subpage
+            href: null,
           }}
         />
         <Tabs.Screen
           name="tower-details"
           options={{
-            href: null, // Subpage
+            href: null,
           }}
         />
       </Tabs>

@@ -44,14 +44,12 @@ export default function ImportBuyersScreen() {
 
       if (!res.canceled && res.assets && res.assets.length > 0) {
         const file = res.assets[0];
-        // Read file contents
         const response = await fetch(file.uri);
         const text = await response.text();
         setCsvText(text);
         setResult(null);
       }
-    } catch (err) {
-      console.warn('Error reading file:', err);
+    } catch {
       Alert.alert('File Error', 'Could not open CSV file.');
     }
   };
@@ -76,23 +74,20 @@ export default function ImportBuyersScreen() {
     }
   };
 
-  // Preview parsed rows
   const preview = parseBuyersCSV(csvText);
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      {/* Header */}
       <View style={styles.header}>
         <View style={styles.iconCircle}>
           <Ionicons name="cloud-upload" size={24} color="#B45309" />
         </View>
         <Text style={styles.title}>Import Buyers from CSV</Text>
         <Text style={styles.subtitle}>
-          Upload or paste your buyer roster. TowerPulse automatically provisions each unit with a unique invite code (e.g. A1204-7KQ).
+          Upload or paste your buyer roster. Invite codes will be automatically provisioned for each unit.
         </Text>
       </View>
 
-      {/* Action Buttons */}
       <View style={styles.topActions}>
         <TouchableOpacity style={styles.filePickerBtn} onPress={handlePickDocument}>
           <Ionicons name="document-text-outline" size={16} color="#1E293B" />
@@ -111,9 +106,8 @@ export default function ImportBuyersScreen() {
         </TouchableOpacity>
       </View>
 
-      {/* CSV Text Input Area */}
       <View style={styles.inputCard}>
-        <Text style={styles.inputCardLabel}>CSV CONTENT (HEADERS: TOWER, UNIT, NAME, PHONE)</Text>
+        <Text style={styles.inputCardLabel}>CSV CONTENT (TOWER, UNIT, NAME, PHONE)</Text>
         <TextInput
           style={styles.textArea}
           value={csvText}
@@ -130,19 +124,17 @@ export default function ImportBuyersScreen() {
         />
       </View>
 
-      {/* Parse Preview Status */}
       <View style={styles.previewSummaryRow}>
         <Text style={styles.previewLabel}>
-          PARSED PREVIEW: {preview.buyers.length} VALID BUYER UNITS
+          PARSED: {preview.buyers.length} VALID UNITS
         </Text>
         {preview.skippedCount > 0 && (
           <Text style={styles.skippedWarning}>
-            ({preview.skippedCount} rows skipped or duplicate)
+            ({preview.skippedCount} skipped or duplicate)
           </Text>
         )}
       </View>
 
-      {/* Preview Table of Buyers & Generated Invite Codes */}
       <View style={styles.previewTable}>
         {preview.buyers.slice(0, 6).map((buyer, idx) => (
           <View key={idx} style={styles.previewRow}>
@@ -161,22 +153,21 @@ export default function ImportBuyersScreen() {
         {preview.buyers.length > 6 && (
           <View style={styles.moreRowsNotice}>
             <Text style={styles.moreRowsText}>
-              + {preview.buyers.length - 6} more buyers ready to import
+              + {preview.buyers.length - 6} more units ready to import
             </Text>
           </View>
         )}
       </View>
 
-      {/* Result Status Message */}
       {result && (
         <View style={styles.resultBanner}>
           <Ionicons name="checkmark-circle" size={20} color="#059669" />
           <View style={styles.resultTextCol}>
             <Text style={styles.resultTitle}>
-              Successfully Imported {result.importedCount} Buyers!
+              Successfully Imported {result.importedCount} Buyers
             </Text>
             <Text style={styles.resultSubtitle}>
-              Invite codes have been provisioned. Buyers can now join their respective towers and units.
+              Invite codes have been generated. Buyers can now link their units.
             </Text>
             <TouchableOpacity
               style={styles.viewTowersBtn}
@@ -188,7 +179,6 @@ export default function ImportBuyersScreen() {
         </View>
       )}
 
-      {/* Import Execution Button */}
       <TouchableOpacity
         style={[styles.importSubmitBtn, importing && styles.btnDisabled]}
         onPress={handleExecuteImport}

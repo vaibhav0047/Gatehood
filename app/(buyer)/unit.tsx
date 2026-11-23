@@ -26,9 +26,7 @@ export default function UnitHomeScreen() {
     try {
       const result = await noticeService.getFeedNotices(currentBuyer, 'all', null, 3);
       setLatestNotices(result.notices.slice(0, 2));
-    } catch (e) {
-      console.warn('Failed to load unit preview notices', e);
-    }
+    } catch {}
   };
 
   useEffect(() => {
@@ -67,7 +65,6 @@ export default function UnitHomeScreen() {
       contentContainerStyle={styles.content}
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
     >
-      {/* Buyer Welcome & Unit Header Card */}
       <View style={styles.heroCard}>
         <View style={styles.heroTopRow}>
           <View>
@@ -80,7 +77,6 @@ export default function UnitHomeScreen() {
           </View>
         </View>
 
-        {/* Highlight Unit Specs */}
         <View style={styles.specsGrid}>
           <View style={styles.specItem}>
             <Text style={styles.specLabel}>UNIT</Text>
@@ -100,7 +96,6 @@ export default function UnitHomeScreen() {
           </View>
         </View>
 
-        {/* Days to Possession Countdown Strip */}
         <View style={styles.countdownStrip}>
           <View style={styles.countdownLeft}>
             <Ionicons name="calendar-outline" size={20} color="#1E40AF" />
@@ -115,10 +110,8 @@ export default function UnitHomeScreen() {
         </View>
       </View>
 
-      {/* Construction Progress Breakdown */}
       <ProgressRing progressPercent={currentBuyer.progressPercent || 72} />
 
-      {/* Latest Updates Shortcut */}
       <View style={styles.sectionHeaderRow}>
         <Text style={styles.sectionTitle}>LATEST NOTICES FOR YOU</Text>
         <TouchableOpacity onPress={() => router.push('/(buyer)/feed')}>
@@ -161,11 +154,10 @@ export default function UnitHomeScreen() {
         </View>
       )}
 
-      {/* Site Office & Support Card */}
       <View style={styles.supportCard}>
         <View style={styles.supportHeader}>
           <Ionicons name="headset-outline" size={18} color="#1E293B" />
-          <Text style={styles.supportTitle}>Builder Site Office & Relationship Manager</Text>
+          <Text style={styles.supportTitle}>Builder Site Office & Support</Text>
         </View>
         <Text style={styles.supportDesc}>
           Site Office: Mon - Sat (9:30 AM - 6:30 PM) • Phone: +91 800-TOWER-00

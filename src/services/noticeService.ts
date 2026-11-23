@@ -30,10 +30,6 @@ export interface PaginatedNoticesResult {
 }
 
 export const noticeService = {
-  /**
-   * Loads paginated notices (15 at a time), filtered for the specific buyer.
-   * Pinned notices come first, followed by newest.
-   */
   async getFeedNotices(
     buyer: Buyer,
     filter: FeedFilter = 'all',
@@ -83,7 +79,6 @@ export const noticeService = {
       const lastVisible = snapshot.docs[snapshot.docs.length - 1] || null;
       const hasMore = snapshot.docs.length === limitCount;
 
-      // Cache the first page for offline access
       if (!cursorDoc && notices.length > 0) {
         await storageService.setCachedFeed(notices);
       }
@@ -93,8 +88,7 @@ export const noticeService = {
         lastDoc: lastVisible,
         hasMore,
       };
-    } catch (error) {
-      console.warn('Firestore fetch failed, attempting cached feed fallback', error);
+    } catch {
       const cached = await storageService.getCachedFeed();
       if (cached.length > 0) {
         return {
@@ -104,21 +98,16 @@ export const noticeService = {
           fromCache: true,
         };
       }
-      // If no async-storage cache, use seeded bundle fallback
       return this.getLocalFeedNotices(buyer, filter, cursorDoc, limitCount);
     }
   },
 
-  /**
-   * Subscribes to real-time live updates on the buyer's feed.
-   */
   subscribeToFeed(
     buyer: Buyer,
     filter: FeedFilter,
     onUpdate: (notices: Notice[]) => void
   ): Unsubscribe {
     if (!isFirebaseConfigured || !db) {
-      // Return a no-op unsubscribe function for offline/local mode
       return () => {};
     }
 
@@ -149,18 +138,11 @@ export const noticeService = {
         }));
         onUpdate(notices);
       },
-      (err) => {
-        console.warn('Feed real-time listener error:', err);
-      }
+      () => {}
     );
   },
 
-  /**
-   * Marks a notice as read by a buyer.
-   * Records read receipt and increments read count atomically.
-   */
   async markAsRead(noticeId: string, buyer: Buyer): Promise<void> {
-    // Record locally first for instant UI response
     await storageService.markNoticeReadLocally(buyer.id, noticeId);
 
     const receipt: ReadReceipt = {
@@ -175,7 +157,6 @@ export const noticeService = {
     await storageService.saveLocalRead(noticeId, receipt);
 
     if (!isFirebaseConfigured || !db) {
-      // Update in-memory local notices
       const localNotices = await this.getAllLocalNotices();
       const target = localNotices.find((n) => n.id === noticeId);
       if (target) {
@@ -192,20 +173,14 @@ export const noticeService = {
       if (!existing.exists()) {
         await setDoc(readRef, receipt);
 
-        // Atomic counter increment
         const noticeRef = doc(db, 'notices', noticeId);
         await updateDoc(noticeRef, {
           readCount: increment(1),
         });
       }
-    } catch (e) {
-      console.warn('Failed to commit read receipt to Firestore:', e);
-    }
+    } catch {}
   },
 
-  /**
-   * Retrieves read analytics for a notice: who has read it and who hasn't.
-   */
   async getNoticeReadAnalytics(
     notice: Notice,
     allBuyers: Buyer[]
@@ -216,7 +191,6 @@ export const noticeService = {
     totalTargetBuyers: number;
     readPercentage: number;
   }> {
-    // 1. Determine target audience buyers
     let targetBuyers: Buyer[] = [];
     if (notice.targetType === 'all') {
       targetBuyers = allBuyers;
@@ -226,15 +200,13 @@ export const noticeService = {
       targetBuyers = allBuyers.filter((b) => notice.targetUnits.includes(b.unit));
     }
 
-    // 2. Fetch read receipts
     let readReceipts: ReadReceipt[] = [];
     if (isFirebaseConfigured && db) {
       try {
         const readsRef = collection(db, 'notices', notice.id, 'reads');
         const snapshot = await getDocs(readsRef);
         readReceipts = snapshot.docs.map((d) => d.data() as ReadReceipt);
-      } catch (e) {
-        console.warn('Error reading receipts from Firestore, using local fallback', e);
+      } catch {
         readReceipts = await storageService.getLocalReads(notice.id);
       }
     } else {
@@ -257,14 +229,10 @@ export const noticeService = {
     };
   },
 
-  /**
-   * Creates a new notice.
-   */
   async createNotice(
     noticeData: Omit<Notice, 'id' | 'readCount' | 'audience' | 'createdAt'>,
     allBuyers: Buyer[]
   ): Promise<Notice> {
-    // Construct audience tokens
     const audience: string[] = [];
     if (noticeData.targetType === 'all') {
       audience.push('ALL');
@@ -274,7 +242,6 @@ export const noticeService = {
       noticeData.targetUnits.forEach((u) => audience.push(`UNIT:${u}`));
     }
 
-    // Determine target count
     let totalTargetBuyers = 0;
     if (noticeData.targetType === 'all') {
       totalTargetBuyers = allBuyers.length;
@@ -306,9 +273,6 @@ export const noticeService = {
     return newNotice;
   },
 
-  /**
-   * Gets all notices for Builder management dashboard.
-   */
   async getAllNotices(): Promise<Notice[]> {
     if (isFirebaseConfigured && db) {
       try {
@@ -323,18 +287,14 @@ export const noticeService = {
           id: d.id,
           ...(d.data() as Omit<Notice, 'id'>),
         }));
-      } catch (e) {
-        console.warn('Error fetching all notices from Firestore', e);
-      }
+      } catch {}
     }
     return this.getAllLocalNotices();
   },
 
-  // --- Local / Offline Store Helpers ---
   async getAllLocalNotices(): Promise<Notice[]> {
     const stored = await storageService.getLocalNotices();
     if (stored.length > 0) return stored;
-    // Fallback to seeded bundle
     const fallbackNotices = (seededBundle.notices as Notice[]) || [];
     await storageService.setLocalNotices(fallbackNotices);
     return fallbackNotices;
@@ -348,7 +308,6 @@ export const noticeService = {
   ): Promise<PaginatedNoticesResult> {
     const all = await this.getAllLocalNotices();
 
-    // Filter notices meant for this buyer
     const filtered = all.filter((n) => {
       const isAudienceMatch =
         n.audience.includes('ALL') ||
@@ -366,7 +325,6 @@ export const noticeService = {
       return true;
     });
 
-    // Sort: pinned first, then newest
     filtered.sort((a, b) => {
       if (a.isPinned !== b.isPinned) {
         return a.isPinned ? -1 : 1;

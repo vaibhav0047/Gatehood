@@ -29,7 +29,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [allBuyers, setAllBuyers] = useState<Buyer[]>([]);
   const [isAppReady, setIsAppReady] = useState<boolean>(false);
 
-  // Initialize persisted state on launch
   useEffect(() => {
     async function init() {
       try {
@@ -43,14 +42,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
         const savedBuyer = await storageService.getCurrentBuyer();
         if (savedBuyer) {
-          // Synchronize with latest buyer state from database
           const freshBuyer = buyers.find((b) => b.id === savedBuyer.id) || savedBuyer;
           setCurrentBuyerState(freshBuyer);
 
           const readIds = await storageService.getReadNoticeIds(freshBuyer.id);
           setReadNoticeIds(readIds);
         } else {
-          // Default demo buyer if none claimed yet (e.g. Unit A-1204 Rahul Sharma)
           const defaultBuyer = buyers.find((b) => b.id === 'A-1204');
           if (defaultBuyer) {
             setCurrentBuyerState(defaultBuyer);
@@ -60,7 +57,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           }
         }
       } catch (err) {
-        console.warn('Initialization error:', err);
+        console.warn('Init error', err);
       } finally {
         setIsAppReady(true);
       }

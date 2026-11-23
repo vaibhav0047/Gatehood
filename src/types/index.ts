@@ -17,15 +17,13 @@ export interface Notice {
   content: string;
   category: NoticeCategory;
   targetType: NoticeTargetType;
-  targetTowers: string[]; // e.g. ["Tower A", "Tower B"]
-  targetUnits: string[];  // e.g. ["A-1204", "B-0301"]
-  // Unified audience tokens for single array-contains-any query:
-  // e.g. ['ALL'], ['TOWER:Tower A'], ['UNIT:A-1204']
+  targetTowers: string[];
+  targetUnits: string[];
   audience: string[];
   isPinned: boolean;
   readCount: number;
   totalTargetBuyers: number;
-  createdAt: number; // Unix timestamp in ms
+  createdAt: number;
   createdBy: string;
   authorRole: string;
   imageUrl?: string;
@@ -37,24 +35,24 @@ export interface ReadReceipt {
   unit: string;
   tower: string;
   phone: string;
-  readAt: number; // Unix timestamp in ms
+  readAt: number;
 }
 
 export type InviteStatus = 'pending' | 'joined' | 'expired';
 
 export interface Buyer {
-  id: string; // usually normalized unit ID e.g. "A-1204" or uuid
+  id: string;
   name: string;
   phone: string;
-  tower: string; // e.g. "Tower A"
-  unit: string;  // e.g. "A-1204"
-  configuration: string; // e.g. "3BHK Luxury", "2BHK Premium"
-  progressPercent: number; // 0 - 100
-  possessionDate: string; // ISO date string e.g. "2027-06-30"
-  inviteCode: string; // e.g. "A1204-7KQ"
+  tower: string;
+  unit: string;
+  configuration: string;
+  progressPercent: number;
+  possessionDate: string;
+  inviteCode: string;
   inviteStatus: InviteStatus;
-  inviteExpiresAt: number; // Unix timestamp ms
-  joinedAt?: number | null; // Unix timestamp ms
+  inviteExpiresAt: number;
+  joinedAt?: number | null;
   createdAt: number;
 }
 

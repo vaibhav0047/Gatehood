@@ -3,8 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 interface ProgressRingProps {
-  progressPercent: number; // 0 - 100
-  size?: number;
+  progressPercent: number;
 }
 
 export const ProgressRing: React.FC<ProgressRingProps> = ({
@@ -23,7 +22,6 @@ export const ProgressRing: React.FC<ProgressRingProps> = ({
 
   return (
     <View style={styles.container}>
-      {/* Visual Overall Bar & Large Percentage */}
       <View style={styles.headerRow}>
         <View>
           <Text style={styles.overallLabel}>OVERALL CONSTRUCTION</Text>
@@ -37,12 +35,10 @@ export const ProgressRing: React.FC<ProgressRingProps> = ({
         </View>
       </View>
 
-      {/* Progress Bar Container */}
       <View style={styles.track}>
         <View style={[styles.fill, { width: `${percent}%` }]} />
       </View>
 
-      {/* Detailed Milestone Stages Breakdown */}
       <View style={styles.milestoneList}>
         {milestones.map((item, idx) => (
           <View key={idx} style={styles.milestoneRow}>

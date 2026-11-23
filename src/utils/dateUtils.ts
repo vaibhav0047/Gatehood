@@ -1,6 +1,3 @@
-/**
- * Calculates remaining days until possession.
- */
 export function calculateDaysToPossession(targetDateStr: string): number {
   const target = new Date(targetDateStr).getTime();
   const now = Date.now();
@@ -9,9 +6,6 @@ export function calculateDaysToPossession(targetDateStr: string): number {
   return Math.max(0, diffDays);
 }
 
-/**
- * Returns a human-friendly relative time string (e.g. "Just now", "5m ago", "2h ago", "3d ago")
- */
 export function formatRelativeTime(timestamp: number): string {
   const diffSeconds = Math.floor((Date.now() - timestamp) / 1000);
   if (diffSeconds < 60) return 'Just now';
@@ -30,9 +24,6 @@ export function formatRelativeTime(timestamp: number): string {
   });
 }
 
-/**
- * Formats full date with time (e.g. "Nov 23, 2026 at 4:30 PM")
- */
 export function formatFullDateTime(timestamp: number): string {
   const date = new Date(timestamp);
   return date.toLocaleString('en-US', {

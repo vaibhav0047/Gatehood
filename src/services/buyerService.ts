@@ -2,8 +2,6 @@ import {
   collection,
   doc,
   getDocs,
-  getDoc,
-  setDoc,
   updateDoc,
   query,
   where,
@@ -34,9 +32,6 @@ export class InviteCodeError extends Error {
 }
 
 export const buyerService = {
-  /**
-   * Retrieves all buyers across the project.
-   */
   async getAllBuyers(): Promise<Buyer[]> {
     if (isFirebaseConfigured && db) {
       try {
@@ -45,9 +40,7 @@ export const buyerService = {
         if (!snapshot.empty) {
           return snapshot.docs.map((d) => d.data() as Buyer);
         }
-      } catch (e) {
-        console.warn('Error fetching buyers from Firestore, falling back', e);
-      }
+      } catch {}
     }
 
     const localBuyers = await storageService.getLocalBuyers();
@@ -60,10 +53,6 @@ export const buyerService = {
     return fallback;
   },
 
-  /**
-   * Validates and claims an invite code.
-   * Handles invalid, already-used, and expired codes rigorously.
-   */
   async validateAndClaimInviteCode(rawCode: string): Promise<Buyer> {
     const code = normalizeInviteCode(rawCode);
     if (!code) {
@@ -80,9 +69,7 @@ export const buyerService = {
         if (!snapshot.empty) {
           buyer = snapshot.docs[0].data() as Buyer;
         }
-      } catch (e) {
-        console.warn('Firestore invite lookup failed, checking local store', e);
-      }
+      } catch {}
     }
 
     if (!buyer) {
@@ -90,7 +77,6 @@ export const buyerService = {
       buyer = allBuyers.find((b) => normalizeInviteCode(b.inviteCode) === code) || null;
     }
 
-    // 1. Invalid Code check
     if (!buyer) {
       throw new InviteCodeError(
         'INVALID_CODE',
@@ -98,7 +84,6 @@ export const buyerService = {
       );
     }
 
-    // 2. Expired Code check
     if (buyer.inviteExpiresAt && buyer.inviteExpiresAt < Date.now()) {
       const expDate = new Date(buyer.inviteExpiresAt).toLocaleDateString('en-US', {
         month: 'short',
@@ -112,7 +97,6 @@ export const buyerService = {
       );
     }
 
-    // 3. Already Used check
     if (buyer.inviteStatus === 'joined') {
       const joinedDate = buyer.joinedAt
         ? new Date(buyer.joinedAt).toLocaleDateString('en-US', {
@@ -128,7 +112,6 @@ export const buyerService = {
       );
     }
 
-    // 4. Valid Code: Claim and activate unit
     const now = Date.now();
     const updatedBuyer: Buyer = {
       ...buyer,
@@ -143,25 +126,18 @@ export const buyerService = {
           inviteStatus: 'joined',
           joinedAt: now,
         });
-      } catch (e) {
-        console.warn('Error updating claimed buyer in Firestore:', e);
-      }
+      } catch {}
     }
 
-    // Update in local store
     const allBuyers = await this.getAllBuyers();
     const updatedList = allBuyers.map((b) => (b.id === buyer?.id ? updatedBuyer : b));
     await storageService.setLocalBuyers(updatedList);
 
-    // Persist as current buyer session
     await storageService.setCurrentBuyer(updatedBuyer);
 
     return updatedBuyer;
   },
 
-  /**
-   * Calculates tower-by-tower statistics and overall project overview.
-   */
   async getTowerBreakdown(): Promise<{
     towers: TowerStats[];
     overview: ProjectOverview;
@@ -228,9 +204,6 @@ export const buyerService = {
     };
   },
 
-  /**
-   * Imports buyers from raw CSV text content.
-   */
   async importBuyersFromCSV(csvContent: string): Promise<CSVImportResult> {
     const parseResult = parseBuyersCSV(csvContent);
     if (!parseResult.success) {
@@ -240,7 +213,6 @@ export const buyerService = {
     const currentBuyers = await this.getAllBuyers();
     const existingUnitMap = new Map(currentBuyers.map((b) => [b.unit, b]));
 
-    // Merge: insert or update buyers
     for (const newBuyer of parseResult.buyers) {
       existingUnitMap.set(newBuyer.unit, newBuyer);
     }
@@ -255,9 +227,7 @@ export const buyerService = {
           batch.set(docRef, buyer, { merge: true });
         }
         await batch.commit();
-      } catch (e) {
-        console.warn('Error saving imported buyers to Firestore:', e);
-      }
+      } catch {}
     }
 
     await storageService.setLocalBuyers(mergedBuyers);

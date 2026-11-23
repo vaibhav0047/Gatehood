@@ -78,7 +78,7 @@ export default function CreateNoticeScreen() {
           targetTowers: targetType === 'towers' ? selectedTowers : [],
           targetUnits: targetType === 'units' ? selectedUnits : [],
           isPinned,
-          totalTargetBuyers: 0, // calculated inside noticeService
+          totalTargetBuyers: 0,
           createdBy: 'builder_admin',
           authorRole: 'Chief Project Engineer',
           imageUrl: imageUrl.trim() || undefined,
@@ -86,7 +86,7 @@ export default function CreateNoticeScreen() {
         allBuyers
       );
 
-      Alert.alert('Notice Broadcasted', 'Notice has been published with live push to buyer feeds!', [
+      Alert.alert('Notice Broadcasted', 'Notice has been published to buyer feeds.', [
         {
           text: 'OK',
           onPress: () => router.replace('/(builder)'),
@@ -120,7 +120,6 @@ export default function CreateNoticeScreen() {
         </Text>
       </View>
 
-      {/* Target Audience Selector */}
       <View style={styles.card}>
         <Text style={styles.cardLabel}>TARGET AUDIENCE</Text>
         <View style={styles.targetTypeRow}>
@@ -182,10 +181,9 @@ export default function CreateNoticeScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* Multi-select Towers */}
         {targetType === 'towers' && (
           <View style={styles.subSelectorBox}>
-            <Text style={styles.subSelectorLabel}>SELECT TOWERS TO TARGET:</Text>
+            <Text style={styles.subSelectorLabel}>SELECT TOWERS:</Text>
             <View style={styles.chipsWrap}>
               {availableTowers.map((tower) => {
                 const isSelected = selectedTowers.includes(tower);
@@ -210,7 +208,6 @@ export default function CreateNoticeScreen() {
           </View>
         )}
 
-        {/* Multi-select Units */}
         {targetType === 'units' && (
           <View style={styles.subSelectorBox}>
             <Text style={styles.subSelectorLabel}>SELECT APARTMENT UNITS:</Text>
@@ -239,7 +236,6 @@ export default function CreateNoticeScreen() {
         )}
       </View>
 
-      {/* Category Chips */}
       <View style={styles.card}>
         <Text style={styles.cardLabel}>NOTICE CATEGORY</Text>
         <View style={styles.chipsWrap}>
@@ -260,7 +256,6 @@ export default function CreateNoticeScreen() {
         </View>
       </View>
 
-      {/* Pin to Top Switch */}
       <View style={[styles.card, styles.pinnedRow]}>
         <View style={styles.pinnedLeft}>
           <Ionicons name="pin" size={18} color="#B45309" />
@@ -279,7 +274,6 @@ export default function CreateNoticeScreen() {
         />
       </View>
 
-      {/* Notice Title & Content */}
       <View style={styles.card}>
         <Text style={styles.cardLabel}>NOTICE TITLE</Text>
         <TextInput
@@ -302,9 +296,8 @@ export default function CreateNoticeScreen() {
         />
       </View>
 
-      {/* Optional Photo Attachment */}
       <View style={styles.card}>
-        <Text style={styles.cardLabel}>OPTIONAL SITE PHOTO (ATTACHMENT)</Text>
+        <Text style={styles.cardLabel}>SITE PHOTO (OPTIONAL)</Text>
         <View style={styles.samplePhotoRow}>
           {SAMPLE_PHOTOS.map((photo, i) => (
             <TouchableOpacity
@@ -319,14 +312,13 @@ export default function CreateNoticeScreen() {
         </View>
         <TextInput
           style={[styles.textInput, { marginTop: 8 }]}
-          placeholder="Or paste custom image URL..."
+          placeholder="Or paste image URL..."
           placeholderTextColor="#94A3B8"
           value={imageUrl}
           onChangeText={setImageUrl}
         />
       </View>
 
-      {/* Submit Broadcast Button */}
       <TouchableOpacity
         style={[styles.broadcastBtn, posting && styles.btnDisabled]}
         onPress={handlePost}
