@@ -1,0 +1,1277 @@
+{
+  "notices": [
+    {
+      "id": "notice_001",
+      "title": "🚨 Mandatory Notice: Electrical Load & False Ceiling Guidelines",
+      "content": "All buyers undertaking interior planning must submit false ceiling drawings and electrical load requirements to the site engineering office before beginning work. Standard connected load per 3BHK unit is 8kW. Enhancements require prior approval.",
+      "category": "urgent",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": true,
+      "readCount": 12,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795459056390,
+      "createdBy": "builder_admin",
+      "authorRole": "Chief Project Engineer",
+      "imageUrl": "https://images.unsplash.com/photo-1541888946425-d0fbb186156f?w=800&auto=format&fit=crop&q=60"
+    },
+    {
+      "id": "notice_002",
+      "title": "📌 Q4 Construction Milestone: Tower A & B RCC Slabs Completed",
+      "content": "We are thrilled to announce that the structural RCC casting for all 18 floors of Tower A and Tower B has been completed on schedule. External plastering and window frame installations are now underway.",
+      "category": "milestone",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower A",
+        "Tower B"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower A",
+        "TOWER:Tower B"
+      ],
+      "isPinned": true,
+      "readCount": 7,
+      "totalTargetBuyers": 9,
+      "createdAt": 1795444656390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Operations Director",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=60"
+    },
+    {
+      "id": "notice_003",
+      "title": "🏢 Notice for Tower A Residents: Otis High-Speed Lift Installation",
+      "content": "Otis elevator shafts have reached Tower A 14th floor. Mechanical hoist testing will run between 9 AM and 5 PM this week. Passenger lift handover is planned for February 2027.",
+      "category": "construction",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower A"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower A"
+      ],
+      "isPinned": false,
+      "readCount": 4,
+      "totalTargetBuyers": 5,
+      "createdAt": 1795430256390,
+      "createdBy": "builder_admin",
+      "authorRole": "MEP Infrastructure Team"
+    },
+    {
+      "id": "notice_004",
+      "title": "🔑 Unit A-1204: Woodwork & Tile Selection Schedule",
+      "content": "Dear Mr. Rahul Sharma, your 3BHK unit is ready for tile selection and kitchen modular layout sign-off. Please visit the site experience center this Saturday between 11 AM - 2 PM.",
+      "category": "milestone",
+      "targetType": "units",
+      "targetTowers": [],
+      "targetUnits": [
+        "A-1204"
+      ],
+      "audience": [
+        "UNIT:A-1204"
+      ],
+      "isPinned": true,
+      "readCount": 1,
+      "totalTargetBuyers": 1,
+      "createdAt": 1795415856390,
+      "createdBy": "builder_admin",
+      "authorRole": "Customer Relations Lead"
+    },
+    {
+      "id": "notice_005",
+      "title": "💧 Rainwater Harvesting & Dual Plumbing System Testing",
+      "content": "The campus eco-grid with 6 percolation wells and the dual water recycling setup has achieved zero leakage certification from Green Building Council auditors.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 9,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795401456390,
+      "createdBy": "builder_admin",
+      "authorRole": "Environmental Quality Cell"
+    },
+    {
+      "id": "notice_006",
+      "title": "⚡ Tower B: Main Electrical Riser Cable Pulling Begins",
+      "content": "Armoured copper riser cables are being installed in Tower B shafts from basement substation to 18th floor distribution panels.",
+      "category": "construction",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower B"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower B"
+      ],
+      "isPinned": false,
+      "readCount": 3,
+      "totalTargetBuyers": 4,
+      "createdAt": 1795387056390,
+      "createdBy": "builder_admin",
+      "authorRole": "Electrical Systems Lead"
+    },
+    {
+      "id": "notice_007",
+      "title": "📋 Unit B-0301: Plumbing Inspection Passed",
+      "content": "Hydrostatic pressure testing for hot/cold CPVC water lines in both master and guest bathrooms for unit B-0301 has successfully passed inspection at 10 Bar pressure for 24 hours.",
+      "category": "milestone",
+      "targetType": "units",
+      "targetTowers": [],
+      "targetUnits": [
+        "B-0301"
+      ],
+      "audience": [
+        "UNIT:B-0301"
+      ],
+      "isPinned": false,
+      "readCount": 1,
+      "totalTargetBuyers": 1,
+      "createdAt": 1795372656390,
+      "createdBy": "builder_admin",
+      "authorRole": "Quality Assurance Dept"
+    },
+    {
+      "id": "notice_008",
+      "title": "🏊 Clubhouse Podium & Swimming Pool Deck Concreting",
+      "content": "Podium slab waterproofing and Olympic-size infinity pool concrete pouring has commenced. Completion of the clubhouse structure is slated for March 2027.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 8,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795358256390,
+      "createdBy": "builder_admin",
+      "authorRole": "Civil Project Manager",
+      "imageUrl": "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&auto=format&fit=crop&q=60"
+    },
+    {
+      "id": "notice_009",
+      "title": "📑 Demand Note & 7th Slab Payment Milestone Notice",
+      "content": "Buyers whose unit payment plan is linked to the 7th structural floor completion slab are requested to verify demand notes dispatched to their registered email IDs.",
+      "category": "payment",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 11,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795343856390,
+      "createdBy": "builder_admin",
+      "authorRole": "Accounts & Billing Office"
+    },
+    {
+      "id": "notice_010",
+      "title": "🏗️ Tower C: 8th Floor Slab Casting Scheduled",
+      "content": "Concrete pumps will be deployed tonight starting 10:00 PM for the continuous casting of Tower C eighth-floor floor plate.",
+      "category": "construction",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower C"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower C"
+      ],
+      "isPinned": false,
+      "readCount": 2,
+      "totalTargetBuyers": 3,
+      "createdAt": 1795329456390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Operations Director"
+    },
+    {
+      "id": "notice_011",
+      "title": "🌿 Landscaping & Miyawaki Forest Planting Drive",
+      "content": "Phase-1 central lawn leveling completed. Over 400 indigenous tree saplings are being planted along the perimeter jogging track.",
+      "category": "event",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 6,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795315056390,
+      "createdBy": "builder_admin",
+      "authorRole": "Landscape Architecture Lead"
+    },
+    {
+      "id": "notice_012",
+      "title": "🚗 Basement 2 Car Park Epoxy Flooring Application",
+      "content": "Vehicular movement in Basement-2 will be restricted as high-durability epoxy coating and parking bay numbering is being applied.",
+      "category": "maintenance",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 5,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795300656390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Safety Head"
+    },
+    {
+      "id": "notice_013",
+      "title": "🔔 Tower A: Fire Sprinkler & Smoke Detection Network",
+      "content": "Floor 1 to 12 smoke detectors and deluge valves have been connected to the central fire command console. Testing commences next Tuesday.",
+      "category": "construction",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower A"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower A"
+      ],
+      "isPinned": false,
+      "readCount": 3,
+      "totalTargetBuyers": 5,
+      "createdAt": 1795286256390,
+      "createdBy": "builder_admin",
+      "authorRole": "Fire & Safety Officer"
+    },
+    {
+      "id": "notice_014",
+      "title": "🚪 Unit A-1204: Main Teakwood Door Frame Fixed",
+      "content": "Main entrance premium teakwood frame has been secured with heavy-duty anchors and anti-termite treatment completed.",
+      "category": "construction",
+      "targetType": "units",
+      "targetTowers": [],
+      "targetUnits": [
+        "A-1204"
+      ],
+      "audience": [
+        "UNIT:A-1204"
+      ],
+      "isPinned": false,
+      "readCount": 1,
+      "totalTargetBuyers": 1,
+      "createdAt": 1795271856390,
+      "createdBy": "builder_admin",
+      "authorRole": "Finishing Works Engineer"
+    },
+    {
+      "id": "notice_015",
+      "title": "☀️ Rooftop Solar Photovoltaic Grid Installation",
+      "content": "Solar panels of 120kW combined capacity will power all common area lighting and backup systems, reducing maintenance overheads by 35%.",
+      "category": "milestone",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 7,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795257456390,
+      "createdBy": "builder_admin",
+      "authorRole": "Sustainability Director"
+    },
+    {
+      "id": "notice_016",
+      "title": "[Tower A] Kitchen Exhaust Duct & Chimney Core Cutting - Phase 4",
+      "content": "Official update #16: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower A"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower A"
+      ],
+      "isPinned": false,
+      "readCount": 4,
+      "totalTargetBuyers": 4,
+      "createdAt": 1795297056390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_017",
+      "title": "Security Perimeter CCTV Fiber Loop Installation - Phase 4",
+      "content": "Official update #17: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "maintenance",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 4,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795286256390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_018",
+      "title": "Quarterly Project RERA Compliance Report Uploaded - Phase 4",
+      "content": "Official update #18: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "legal",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 8,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795275456390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_019",
+      "title": "[Tower D] Marble Flooring Laying & Diamond Polishing Phase - Phase 4",
+      "content": "Official update #19: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower D"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower D"
+      ],
+      "isPinned": false,
+      "readCount": 4,
+      "totalTargetBuyers": 4,
+      "createdAt": 1795264656390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_020",
+      "title": "Intercom & Smart Video Doorbell Cabling Update - Phase 5",
+      "content": "Official update #20: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 6,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795253856390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_021",
+      "title": "UPVC Window Glazing Quality Check - Phase 5",
+      "content": "Official update #21: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 6,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795243056390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_022",
+      "title": "[Unit A-1204] Gas Pipeline Reticulation Network Inspection - Phase 5",
+      "content": "Official update #22: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "milestone",
+      "targetType": "units",
+      "targetTowers": [],
+      "targetUnits": [
+        "A-1204"
+      ],
+      "audience": [
+        "UNIT:A-1204"
+      ],
+      "isPinned": false,
+      "readCount": 2,
+      "totalTargetBuyers": 1,
+      "createdAt": 1795232256390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_023",
+      "title": "Waterproofing Polymer Screed on Balconies - Phase 5",
+      "content": "Official update #23: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 5,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795221456390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_024",
+      "title": "Substation Transformer Delivery & Positioning - Phase 5",
+      "content": "Official update #24: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "milestone",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 7,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795210656390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_025",
+      "title": "[Tower E] Internal Gypsum Wall Plastering Progress - Phase 6",
+      "content": "Official update #25: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower E"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower E"
+      ],
+      "isPinned": false,
+      "readCount": 1,
+      "totalTargetBuyers": 4,
+      "createdAt": 1795199856390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_026",
+      "title": "Kitchen Exhaust Duct & Chimney Core Cutting - Phase 6",
+      "content": "Official update #26: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 4,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795189056390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_027",
+      "title": "Security Perimeter CCTV Fiber Loop Installation - Phase 6",
+      "content": "Official update #27: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "maintenance",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 8,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795178256390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_028",
+      "title": "[Tower C] Quarterly Project RERA Compliance Report Uploaded - Phase 6",
+      "content": "Official update #28: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "legal",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower C"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower C"
+      ],
+      "isPinned": false,
+      "readCount": 3,
+      "totalTargetBuyers": 4,
+      "createdAt": 1795167456390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_029",
+      "title": "[Unit A-1204] Marble Flooring Laying & Diamond Polishing Phase - Phase 6",
+      "content": "Official update #29: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "units",
+      "targetTowers": [],
+      "targetUnits": [
+        "A-1204"
+      ],
+      "audience": [
+        "UNIT:A-1204"
+      ],
+      "isPinned": false,
+      "readCount": 5,
+      "totalTargetBuyers": 1,
+      "createdAt": 1795156656390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_030",
+      "title": "Intercom & Smart Video Doorbell Cabling Update - Phase 7",
+      "content": "Official update #30: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 3,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795145856390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_031",
+      "title": "[Tower A] UPVC Window Glazing Quality Check - Phase 7",
+      "content": "Official update #31: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower A"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower A"
+      ],
+      "isPinned": false,
+      "readCount": 5,
+      "totalTargetBuyers": 4,
+      "createdAt": 1795135056390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_032",
+      "title": "Gas Pipeline Reticulation Network Inspection - Phase 7",
+      "content": "Official update #32: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "milestone",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 8,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795124256390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_033",
+      "title": "Waterproofing Polymer Screed on Balconies - Phase 7",
+      "content": "Official update #33: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 3,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795113456390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_034",
+      "title": "[Tower D] Substation Transformer Delivery & Positioning - Phase 7",
+      "content": "Official update #34: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "milestone",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower D"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower D"
+      ],
+      "isPinned": false,
+      "readCount": 3,
+      "totalTargetBuyers": 4,
+      "createdAt": 1795102656390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_035",
+      "title": "Internal Gypsum Wall Plastering Progress - Phase 8",
+      "content": "Official update #35: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 7,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795091856390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_036",
+      "title": "[Unit A-1204] Kitchen Exhaust Duct & Chimney Core Cutting - Phase 8",
+      "content": "Official update #36: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "units",
+      "targetTowers": [],
+      "targetUnits": [
+        "A-1204"
+      ],
+      "audience": [
+        "UNIT:A-1204"
+      ],
+      "isPinned": false,
+      "readCount": 3,
+      "totalTargetBuyers": 1,
+      "createdAt": 1795081056390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_037",
+      "title": "[Tower B] Security Perimeter CCTV Fiber Loop Installation - Phase 8",
+      "content": "Official update #37: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "maintenance",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower B"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower B"
+      ],
+      "isPinned": false,
+      "readCount": 5,
+      "totalTargetBuyers": 4,
+      "createdAt": 1795070256390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_038",
+      "title": "Quarterly Project RERA Compliance Report Uploaded - Phase 8",
+      "content": "Official update #38: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "legal",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 4,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795059456390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_039",
+      "title": "Marble Flooring Laying & Diamond Polishing Phase - Phase 8",
+      "content": "Official update #39: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 5,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795048656390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_040",
+      "title": "[Tower E] Intercom & Smart Video Doorbell Cabling Update - Phase 9",
+      "content": "Official update #40: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower E"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower E"
+      ],
+      "isPinned": false,
+      "readCount": 3,
+      "totalTargetBuyers": 4,
+      "createdAt": 1795037856390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_041",
+      "title": "UPVC Window Glazing Quality Check - Phase 9",
+      "content": "Official update #41: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 4,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795027056390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_042",
+      "title": "Gas Pipeline Reticulation Network Inspection - Phase 9",
+      "content": "Official update #42: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "milestone",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 6,
+      "totalTargetBuyers": 15,
+      "createdAt": 1795016256390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_043",
+      "title": "[Unit A-1204] Waterproofing Polymer Screed on Balconies - Phase 9",
+      "content": "Official update #43: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "units",
+      "targetTowers": [],
+      "targetUnits": [
+        "A-1204"
+      ],
+      "audience": [
+        "UNIT:A-1204"
+      ],
+      "isPinned": false,
+      "readCount": 4,
+      "totalTargetBuyers": 1,
+      "createdAt": 1795005456390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_044",
+      "title": "Substation Transformer Delivery & Positioning - Phase 9",
+      "content": "Official update #44: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "milestone",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 6,
+      "totalTargetBuyers": 15,
+      "createdAt": 1794994656390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_045",
+      "title": "Internal Gypsum Wall Plastering Progress - Phase 10",
+      "content": "Official update #45: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 5,
+      "totalTargetBuyers": 15,
+      "createdAt": 1794983856390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_046",
+      "title": "[Tower A] Kitchen Exhaust Duct & Chimney Core Cutting - Phase 10",
+      "content": "Official update #46: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower A"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower A"
+      ],
+      "isPinned": false,
+      "readCount": 6,
+      "totalTargetBuyers": 4,
+      "createdAt": 1794973056390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_047",
+      "title": "Security Perimeter CCTV Fiber Loop Installation - Phase 10",
+      "content": "Official update #47: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "maintenance",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 5,
+      "totalTargetBuyers": 15,
+      "createdAt": 1794962256390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_048",
+      "title": "Quarterly Project RERA Compliance Report Uploaded - Phase 10",
+      "content": "Official update #48: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "legal",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 7,
+      "totalTargetBuyers": 15,
+      "createdAt": 1794951456390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_049",
+      "title": "[Tower D] Marble Flooring Laying & Diamond Polishing Phase - Phase 10",
+      "content": "Official update #49: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower D"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower D"
+      ],
+      "isPinned": false,
+      "readCount": 8,
+      "totalTargetBuyers": 4,
+      "createdAt": 1794940656390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_050",
+      "title": "[Unit A-1204] Intercom & Smart Video Doorbell Cabling Update - Phase 11",
+      "content": "Official update #50: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "units",
+      "targetTowers": [],
+      "targetUnits": [
+        "A-1204"
+      ],
+      "audience": [
+        "UNIT:A-1204"
+      ],
+      "isPinned": false,
+      "readCount": 3,
+      "totalTargetBuyers": 1,
+      "createdAt": 1794929856390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_051",
+      "title": "UPVC Window Glazing Quality Check - Phase 11",
+      "content": "Official update #51: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 6,
+      "totalTargetBuyers": 15,
+      "createdAt": 1794919056390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_052",
+      "title": "[Tower B] Gas Pipeline Reticulation Network Inspection - Phase 11",
+      "content": "Official update #52: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "milestone",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower B"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower B"
+      ],
+      "isPinned": false,
+      "readCount": 5,
+      "totalTargetBuyers": 4,
+      "createdAt": 1794908256390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_053",
+      "title": "Waterproofing Polymer Screed on Balconies - Phase 11",
+      "content": "Official update #53: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 1,
+      "totalTargetBuyers": 15,
+      "createdAt": 1794897456390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_054",
+      "title": "Substation Transformer Delivery & Positioning - Phase 11",
+      "content": "Official update #54: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "milestone",
+      "targetType": "all",
+      "targetTowers": [],
+      "targetUnits": [],
+      "audience": [
+        "ALL"
+      ],
+      "isPinned": false,
+      "readCount": 5,
+      "totalTargetBuyers": 15,
+      "createdAt": 1794886656390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    },
+    {
+      "id": "notice_055",
+      "title": "[Tower E] Internal Gypsum Wall Plastering Progress - Phase 12",
+      "content": "Official update #55: Works are proceeding strictly in accordance with approved structural and MEP specifications. Site engineers have inspected quality metrics and recorded zero deviations.",
+      "category": "construction",
+      "targetType": "towers",
+      "targetTowers": [
+        "Tower E"
+      ],
+      "targetUnits": [],
+      "audience": [
+        "TOWER:Tower E"
+      ],
+      "isPinned": false,
+      "readCount": 4,
+      "totalTargetBuyers": 4,
+      "createdAt": 1794875856390,
+      "createdBy": "builder_admin",
+      "authorRole": "Site Engineering Office"
+    }
+  ],
+  "buyers": [
+    {
+      "id": "A-1204",
+      "name": "Rahul Sharma",
+      "phone": "+91 98765 43210",
+      "tower": "Tower A",
+      "unit": "A-1204",
+      "configuration": "3BHK Luxury (1,850 sq.ft.)",
+      "progressPercent": 72,
+      "possessionDate": "2027-04-30",
+      "inviteCode": "A1204-7KQ",
+      "inviteStatus": "joined",
+      "inviteExpiresAt": 1798051056292,
+      "joinedAt": 1795027056292,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "A-0502",
+      "name": "Priya Narang",
+      "phone": "+91 98111 22334",
+      "tower": "Tower A",
+      "unit": "A-0502",
+      "configuration": "2BHK Executive (1,320 sq.ft.)",
+      "progressPercent": 72,
+      "possessionDate": "2027-04-30",
+      "inviteCode": "A0502-3TR",
+      "inviteStatus": "joined",
+      "inviteExpiresAt": 1798051056292,
+      "joinedAt": 1795199856292,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "A-0901",
+      "name": "Vikram Mehta",
+      "phone": "+91 98222 33445",
+      "tower": "Tower A",
+      "unit": "A-0901",
+      "configuration": "3BHK Luxury (1,850 sq.ft.)",
+      "progressPercent": 72,
+      "possessionDate": "2027-04-30",
+      "inviteCode": "A0901-8BN",
+      "inviteStatus": "pending",
+      "inviteExpiresAt": 1797187056292,
+      "joinedAt": null,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "A-1503",
+      "name": "Ananya Iyer",
+      "phone": "+91 98333 44556",
+      "tower": "Tower A",
+      "unit": "A-1503",
+      "configuration": "4BHK Penthouse (2,900 sq.ft.)",
+      "progressPercent": 72,
+      "possessionDate": "2027-04-30",
+      "inviteCode": "A1503-4LK",
+      "inviteStatus": "pending",
+      "inviteExpiresAt": 1795286256292,
+      "joinedAt": null,
+      "createdAt": 1792003056292
+    },
+    {
+      "id": "A-0201",
+      "name": "Suresh Kumar",
+      "phone": "+91 98444 55667",
+      "tower": "Tower A",
+      "unit": "A-0201",
+      "configuration": "2BHK Executive (1,320 sq.ft.)",
+      "progressPercent": 72,
+      "possessionDate": "2027-04-30",
+      "inviteCode": "A0201-9XY",
+      "inviteStatus": "joined",
+      "inviteExpiresAt": 1797619056292,
+      "joinedAt": 1794422256292,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "B-0301",
+      "name": "Rohit Verma",
+      "phone": "+91 98555 66778",
+      "tower": "Tower B",
+      "unit": "B-0301",
+      "configuration": "3BHK Premium (1,720 sq.ft.)",
+      "progressPercent": 65,
+      "possessionDate": "2027-06-30",
+      "inviteCode": "B0301-4LM",
+      "inviteStatus": "joined",
+      "inviteExpiresAt": 1798051056292,
+      "joinedAt": 1794854256292,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "B-0802",
+      "name": "Sneha Kulkarni",
+      "phone": "+91 98666 77889",
+      "tower": "Tower B",
+      "unit": "B-0802",
+      "configuration": "3BHK Premium (1,720 sq.ft.)",
+      "progressPercent": 65,
+      "possessionDate": "2027-06-30",
+      "inviteCode": "B0802-9XP",
+      "inviteStatus": "pending",
+      "inviteExpiresAt": 1796755056292,
+      "joinedAt": null,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "B-1104",
+      "name": "Amitabh Sen",
+      "phone": "+91 98777 88990",
+      "tower": "Tower B",
+      "unit": "B-1104",
+      "configuration": "2BHK Compact (1,150 sq.ft.)",
+      "progressPercent": 65,
+      "possessionDate": "2027-06-30",
+      "inviteCode": "B1104-2ZX",
+      "inviteStatus": "joined",
+      "inviteExpiresAt": 1798051056292,
+      "joinedAt": 1795286256292,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "B-1402",
+      "name": "Kavita Chawla",
+      "phone": "+91 98888 99001",
+      "tower": "Tower B",
+      "unit": "B-1402",
+      "configuration": "4BHK Signature (2,650 sq.ft.)",
+      "progressPercent": 65,
+      "possessionDate": "2027-06-30",
+      "inviteCode": "B1402-6JH",
+      "inviteStatus": "pending",
+      "inviteExpiresAt": 1797014256292,
+      "joinedAt": null,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "C-0902",
+      "name": "Manish Agarwal",
+      "phone": "+91 98999 00112",
+      "tower": "Tower C",
+      "unit": "C-0902",
+      "configuration": "3BHK Grand (1,950 sq.ft.)",
+      "progressPercent": 58,
+      "possessionDate": "2027-09-30",
+      "inviteCode": "C0902-5VT",
+      "inviteStatus": "joined",
+      "inviteExpiresAt": 1798051056292,
+      "joinedAt": 1794595056292,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "C-0401",
+      "name": "Deepak Joshi",
+      "phone": "+91 99111 22334",
+      "tower": "Tower C",
+      "unit": "C-0401",
+      "configuration": "2BHK Classic (1,280 sq.ft.)",
+      "progressPercent": 58,
+      "possessionDate": "2027-09-30",
+      "inviteCode": "C0401-7WF",
+      "inviteStatus": "pending",
+      "inviteExpiresAt": 1797359856292,
+      "joinedAt": null,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "C-1203",
+      "name": "Ritu Singhal",
+      "phone": "+91 99222 33445",
+      "tower": "Tower C",
+      "unit": "C-1203",
+      "configuration": "3BHK Grand (1,950 sq.ft.)",
+      "progressPercent": 58,
+      "possessionDate": "2027-09-30",
+      "inviteCode": "C1203-3MK",
+      "inviteStatus": "joined",
+      "inviteExpiresAt": 1798051056292,
+      "joinedAt": 1795113456292,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "D-0202",
+      "name": "Harish Nair",
+      "phone": "+91 99333 44556",
+      "tower": "Tower D",
+      "unit": "D-0202",
+      "configuration": "3BHK Deluxe (1,800 sq.ft.)",
+      "progressPercent": 45,
+      "possessionDate": "2027-12-31",
+      "inviteCode": "D0202-8PL",
+      "inviteStatus": "pending",
+      "inviteExpiresAt": 1797878256292,
+      "joinedAt": null,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "D-0701",
+      "name": "Pooja Reddy",
+      "phone": "+91 99444 55667",
+      "tower": "Tower D",
+      "unit": "D-0701",
+      "configuration": "2BHK Deluxe (1,300 sq.ft.)",
+      "progressPercent": 45,
+      "possessionDate": "2027-12-31",
+      "inviteCode": "D0701-1QR",
+      "inviteStatus": "joined",
+      "inviteExpiresAt": 1798051056292,
+      "joinedAt": 1795372656292,
+      "createdAt": 1792867056292
+    },
+    {
+      "id": "E-1001",
+      "name": "Gaurav Kapoor",
+      "phone": "+91 99555 66778",
+      "tower": "Tower E",
+      "unit": "E-1001",
+      "configuration": "4BHK Royal (3,100 sq.ft.)",
+      "progressPercent": 38,
+      "possessionDate": "2028-03-31",
+      "inviteCode": "E1001-9NB",
+      "inviteStatus": "pending",
+      "inviteExpiresAt": 1797964656292,
+      "joinedAt": null,
+      "createdAt": 1792867056292
+    }
+  ],
+  "timestamp": 1795459056391
+}

@@ -1,0 +1,268 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: buyers
+    // Document ID: {buyerId} (e.g. "A-1204")
+    // Fields:
+    //   - id: string (required, 1-50 chars, immutable) - Normalized unit/buyer ID matching doc ID
+    //   - name: string (required, 1-100 chars) - Full name of the unit owner
+    //   - phone: string (required, 7-25 chars) - Primary contact phone number
+    //   - tower: string (required, 1-50 chars) - Residential tower name (e.g. "Tower A")
+    //   - unit: string (required, 1-30 chars) - Apartment unit designation (e.g. "A-1204")
+    //   - configuration: string (required, 1-100 chars) - Flat type/spec (e.g. "3BHK Luxury")
+    //   - progressPercent: number (required, 0-100) - Overall construction milestone percentage
+    //   - possessionDate: string (required, 10-30 chars) - Target handover date (YYYY-MM-DD)
+    //   - inviteCode: string (required, 4-20 chars) - Secure onboarding invite token
+    //   - inviteStatus: string (required, enum: 'pending' | 'joined' | 'expired')
+    //   - inviteExpiresAt: number (required, epoch ms > 0) - Invite expiration timestamp
+    //   - joinedAt: number | null (optional, epoch ms > 0) - Timestamp when invite was claimed
+    //   - createdAt: number (required, epoch ms > 0, immutable) - Record creation timestamp
+    //
+    // Collection: notices
+    // Document ID: {noticeId} (e.g. "notice_001")
+    // Fields:
+    //   - id: string (required, 1-100 chars, immutable) - Document ID matching noticeId
+    //   - title: string (required, 1-200 chars) - Notice headline
+    //   - content: string (required, 1-5000 chars) - Full announcement text
+    //   - category: string (required, enum: 'construction' | 'milestone' | 'maintenance' | 'legal' | 'payment' | 'event' | 'urgent')
+    //   - targetType: string (required, enum: 'all' | 'towers' | 'units')
+    //   - targetTowers: list (required, <= 20 items, each string <= 50 chars)
+    //   - targetUnits: list (required, <= 200 items, each string <= 30 chars)
+    //   - audience: list (required, 1-200 items, each string <= 50 chars) - Targeting tokens ('ALL', 'TOWER:X', 'UNIT:Y')
+    //   - isPinned: bool (required) - Pinned to feed top
+    //   - readCount: number (required, >= 0) - Total counter incremented on read
+    //   - totalTargetBuyers: number (required, >= 0) - Total eligible audience count
+    //   - createdAt: number (required, epoch ms > 0, immutable) - Unix timestamp
+    //   - createdBy: string (required, 1-100 chars, immutable) - Author ID / 'builder_admin'
+    //   - authorRole: string (required, 1-100 chars) - Role title e.g. 'Chief Project Engineer'
+    //   - imageUrl: string (optional, <= 1000 chars, valid HTTP/HTTPS URL)
+    //
+    // Subcollection: notices/{noticeId}/reads/{buyerId}
+    // Document ID: {buyerId} (matches buyerId, e.g. "A-1204")
+    // Fields:
+    //   - buyerId: string (required, 1-50 chars, matches doc ID, immutable)
+    //   - buyerName: string (required, 1-100 chars, immutable)
+    //   - unit: string (required, 1-30 chars, immutable)
+    //   - tower: string (required, 1-50 chars, immutable)
+    //   - phone: string (required, 7-25 chars, immutable)
+    //   - readAt: number (required, epoch ms > 0, immutable)
+    //
+    // ===============================================================
+
+    // Default deny all access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isBuilder() {
+      return isAuthenticated() && (
+        ('role' in request.auth.token && request.auth.token.role == 'builder') ||
+        ('builder' in request.auth.token && request.auth.token.builder == true) ||
+        ('admin' in request.auth.token && request.auth.token.admin == true) ||
+        ('email' in request.auth.token && request.auth.token.email != null && (
+          request.auth.token.email.matches('.*@towerpulse\\.dev$') ||
+          request.auth.token.email.matches('.*@builder\\.com$')
+        ))
+      );
+    }
+
+    function isNum(val) {
+      return val is int || val is float;
+    }
+
+    function areImmutableFieldsUnchanged(fields) {
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(fields);
+    }
+
+    // ===============================================================
+    // Domain Validator: buyers
+    // ===============================================================
+
+    function isValidBuyer(data) {
+      return data.keys().hasAll([
+        'id', 'name', 'phone', 'tower', 'unit', 'configuration',
+        'progressPercent', 'possessionDate', 'inviteCode', 'inviteStatus',
+        'inviteExpiresAt', 'createdAt'
+      ]) &&
+      data.keys().hasOnly([
+        'id', 'name', 'phone', 'tower', 'unit', 'configuration',
+        'progressPercent', 'possessionDate', 'inviteCode', 'inviteStatus',
+        'inviteExpiresAt', 'joinedAt', 'createdAt'
+      ]) &&
+      data.id is string && data.id.size() >= 1 && data.id.size() <= 50 &&
+      data.name is string && data.name.size() >= 1 && data.name.size() <= 100 &&
+      data.phone is string && data.phone.size() >= 7 && data.phone.size() <= 25 &&
+      data.tower is string && data.tower.size() >= 1 && data.tower.size() <= 50 &&
+      data.unit is string && data.unit.size() >= 1 && data.unit.size() <= 30 &&
+      data.configuration is string && data.configuration.size() >= 1 && data.configuration.size() <= 100 &&
+      isNum(data.progressPercent) && data.progressPercent >= 0 && data.progressPercent <= 100 &&
+      data.possessionDate is string && data.possessionDate.size() >= 10 && data.possessionDate.size() <= 30 &&
+      data.inviteCode is string && data.inviteCode.size() >= 4 && data.inviteCode.size() <= 20 &&
+      data.inviteStatus in ['pending', 'joined', 'expired'] &&
+      isNum(data.inviteExpiresAt) && data.inviteExpiresAt > 0 &&
+      isNum(data.createdAt) && data.createdAt > 0 &&
+      (!('joinedAt' in data) || data.joinedAt == null || (isNum(data.joinedAt) && data.joinedAt > 0));
+    }
+
+    function isClaimingInviteCode(buyerId) {
+      // Allows only inviteStatus and joinedAt to change during code redemption
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['inviteStatus', 'joinedAt']) &&
+             // Previous state must strictly be 'pending'
+             resource.data.inviteStatus == 'pending' &&
+             // Target state must be 'joined'
+             request.resource.data.inviteStatus == 'joined' &&
+             // joinedAt timestamp must be set to a positive number
+             'joinedAt' in request.resource.data &&
+             request.resource.data.joinedAt != null &&
+             isNum(request.resource.data.joinedAt) &&
+             request.resource.data.joinedAt > 0 &&
+             // Invite must not have passed expiration time
+             resource.data.inviteExpiresAt > request.time.toMillis() &&
+             // Document ID cannot be tampered with
+             request.resource.data.id == buyerId &&
+             // Document still conforms to complete buyer schema
+             isValidBuyer(request.resource.data);
+    }
+
+    // ===============================================================
+    // Domain Validator: notices
+    // ===============================================================
+
+    function isValidNotice(data) {
+      return data.keys().hasAll([
+        'id', 'title', 'content', 'category', 'targetType',
+        'targetTowers', 'targetUnits', 'audience', 'isPinned',
+        'readCount', 'totalTargetBuyers', 'createdAt', 'createdBy', 'authorRole'
+      ]) &&
+      data.keys().hasOnly([
+        'id', 'title', 'content', 'category', 'targetType',
+        'targetTowers', 'targetUnits', 'audience', 'isPinned',
+        'readCount', 'totalTargetBuyers', 'createdAt', 'createdBy', 'authorRole', 'imageUrl'
+      ]) &&
+      data.id is string && data.id.size() >= 1 && data.id.size() <= 100 &&
+      data.title is string && data.title.size() >= 1 && data.title.size() <= 200 &&
+      data.content is string && data.content.size() >= 1 && data.content.size() <= 5000 &&
+      data.category in ['construction', 'milestone', 'maintenance', 'legal', 'payment', 'event', 'urgent'] &&
+      data.targetType in ['all', 'towers', 'units'] &&
+      data.targetTowers is list && data.targetTowers.size() <= 20 &&
+      data.targetUnits is list && data.targetUnits.size() <= 200 &&
+      data.audience is list && data.audience.size() >= 1 && data.audience.size() <= 200 &&
+      data.isPinned is bool &&
+      isNum(data.readCount) && data.readCount >= 0 &&
+      isNum(data.totalTargetBuyers) && data.totalTargetBuyers >= 0 &&
+      isNum(data.createdAt) && data.createdAt > 0 &&
+      data.createdBy is string && data.createdBy.size() >= 1 && data.createdBy.size() <= 100 &&
+      data.authorRole is string && data.authorRole.size() >= 1 && data.authorRole.size() <= 100 &&
+      (!('imageUrl' in data) || data.imageUrl == null || (
+        data.imageUrl is string &&
+        data.imageUrl.size() <= 1000 &&
+        (data.imageUrl.matches('^https?://.*') || data.imageUrl == '')
+      ));
+    }
+
+    function isValidNoticeReadCountIncrement() {
+      // Allows only readCount to change, by exactly +1
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(['readCount']) &&
+             isNum(request.resource.data.readCount) &&
+             request.resource.data.readCount == resource.data.readCount + 1 &&
+             isValidNotice(request.resource.data);
+    }
+
+    // ===============================================================
+    // Domain Validator: read receipts
+    // ===============================================================
+
+    function isValidReadReceipt(data) {
+      return data.keys().hasAll(['buyerId', 'buyerName', 'unit', 'tower', 'phone', 'readAt']) &&
+             data.keys().hasOnly(['buyerId', 'buyerName', 'unit', 'tower', 'phone', 'readAt']) &&
+             data.buyerId is string && data.buyerId.size() >= 1 && data.buyerId.size() <= 50 &&
+             data.buyerName is string && data.buyerName.size() >= 1 && data.buyerName.size() <= 100 &&
+             data.unit is string && data.unit.size() >= 1 && data.unit.size() <= 30 &&
+             data.tower is string && data.tower.size() >= 1 && data.tower.size() <= 50 &&
+             data.phone is string && data.phone.size() >= 7 && data.phone.size() <= 25 &&
+             isNum(data.readAt) && data.readAt > 0;
+    }
+
+    // ===============================================================
+    // Collection Rules: buyers
+    // ===============================================================
+
+    match /buyers/{buyerId} {
+      // Allow individual get for builders, authenticated users, or invite code checks
+      allow get: if isBuilder() || isAuthenticated() || (resource.data.inviteCode is string);
+
+      // Allow collection list queries for builders, authenticated users, or inviteCode lookup queries
+      allow list: if isBuilder() || isAuthenticated() || (resource.data.inviteCode is string);
+
+      // Only builders can create new buyer records
+      allow create: if isBuilder() &&
+                       isValidBuyer(request.resource.data) &&
+                       request.resource.data.id == buyerId;
+
+      // Update allowed for builders (with immutable id and createdAt), or buyers claiming pending invite codes
+      allow update: if (isBuilder() &&
+                        isValidBuyer(request.resource.data) &&
+                        areImmutableFieldsUnchanged(['id', 'createdAt'])) ||
+                       isClaimingInviteCode(buyerId);
+
+      // Only builders can delete buyer records
+      allow delete: if isBuilder();
+    }
+
+    // ===============================================================
+    // Collection Rules: notices
+    // ===============================================================
+
+    match /notices/{noticeId} {
+      // Notices are accessible to builders, authenticated users, and buyers (feed filtered by audience)
+      allow get, list: if isBuilder() || isAuthenticated() || (resource.data.audience is list);
+
+      // Only builders can author notices
+      allow create: if isBuilder() &&
+                       isValidNotice(request.resource.data) &&
+                       request.resource.data.id == noticeId;
+
+      // Update permitted for builders (protecting id, createdAt, createdBy) or atomic readCount +1 increment
+      allow update: if (isBuilder() &&
+                        isValidNotice(request.resource.data) &&
+                        areImmutableFieldsUnchanged(['id', 'createdAt', 'createdBy'])) ||
+                       isValidNoticeReadCountIncrement();
+
+      // Only builders can delete notices
+      allow delete: if isBuilder();
+
+      // =============================================================
+      // Subcollection: notices/{noticeId}/reads/{buyerId}
+      // =============================================================
+
+      match /reads/{buyerId} {
+        // Individual read receipt lookup for builder or the buyer verifying their read status
+        allow get: if isBuilder() || (resource.data.buyerId == buyerId);
+
+        // Only builders can list all receipts in the subcollection (protects buyer PII & phone numbers)
+        allow list: if isBuilder();
+
+        // A buyer can record their own read receipt exactly once; parent notice must exist
+        allow create: if isValidReadReceipt(request.resource.data) &&
+                         request.resource.data.buyerId == buyerId &&
+                         exists(/databases/$(database)/documents/notices/$(noticeId));
+
+        // Read receipts are immutable to guarantee audit log fidelity
+        allow update, delete: if false;
+      }
+    }
+  }
+}

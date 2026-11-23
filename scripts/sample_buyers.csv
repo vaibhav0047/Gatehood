@@ -1,0 +1,24 @@
+tower,unit,name,phone,configuration
+Tower A,A-1204,Rahul Sharma,+91 98765 43210,3BHK Luxury
+Tower A,A-0502,Priya Narang,+91 98111 22334,2BHK Executive
+Tower A,A-0901,Vikram Mehta,+91 98222 33445,3BHK Luxury
+Tower A,A-1503,Ananya Iyer,+91 98333 44556,4BHK Penthouse
+Tower A,A-0201,Suresh Kumar,+91 98444 55667,2BHK Executive
+Tower A,A-0803,Sunita Deshmukh,+91 98123 45678,3BHK Luxury
+Tower A,A-1102,Karan Johar,+91 98234 56789,3BHK Luxury
+Tower B,B-0301,Rohit Verma,+91 98555 66778,3BHK Premium
+Tower B,B-0802,Sneha Kulkarni,+91 98666 77889,3BHK Premium
+Tower B,B-1104,Amitabh Sen,+91 98777 88990,2BHK Compact
+Tower B,B-1402,Kavita Chawla,+91 98888 99001,4BHK Signature
+Tower B,B-0601,Naveen Patnaik,+91 98345 67890,3BHK Premium
+Tower B,B-0903,Alka Yagnik,+91 98456 78901,2BHK Compact
+Tower C,C-0902,Manish Agarwal,+91 98999 00112,3BHK Grand
+Tower C,C-0401,Deepak Joshi,+91 99111 22334,2BHK Classic
+Tower C,C-1203,Ritu Singhal,+91 99222 33445,3BHK Grand
+Tower C,C-0702,Tanmay Bhat,+91 98567 89012,3BHK Grand
+Tower D,D-0202,Harish Nair,+91 99333 44556,3BHK Deluxe
+Tower D,D-0701,Pooja Reddy,+91 99444 55667,2BHK Deluxe
+Tower D,D-1003,Girish Karnad,+91 98678 90123,3BHK Deluxe
+Tower E,E-1001,Gaurav Kapoor,+91 99555 66778,4BHK Royal
+Tower E,E-0302,Meera Nambiar,+91 99666 77889,3BHK Royal
+Tower E,E-0801,Devendra Fadnavis,+91 98789 01234,4BHK Royal
